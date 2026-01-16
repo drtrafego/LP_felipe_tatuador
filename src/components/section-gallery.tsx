@@ -4,12 +4,12 @@ import { motion } from "framer-motion"
 
 // Placeholder images
 const galleryImages = [
-    "/tatoohero1.jpg",
-    "/tatoohero2.jpg",
-    "/tatoohero3.jpg",
-    "/tatoohero4.jpg",
+    "/APC_0221.jpg",
+    "/APC_0531.jpg",
+    "/IMG_2317.jpg",
+    "/IMG_5694_jpg.jpg",
+    "/IMG_7776.jpg",
     "/tatoohero5.JPG",
-    "/tatoohero6.jpg",
 ]
 
 export function SectionGallery() {
