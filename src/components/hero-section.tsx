@@ -17,7 +17,22 @@ export function Hero() {
         <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-background py-8 md:py-0">
 
             {/* 1. Headline - Top */}
-            <div className="z-20 text-center space-y-4 max-w-4xl px-4 order-1 mb-6 md:mb-10 relative">
+            <div className="z-20 text-center space-y-4 max-w-4xl px-4 order-1 mb-6 md:mb-10 relative flex flex-col items-center">
+
+                {/* Badge */}
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/80 border border-amber-500/30 backdrop-blur-sm mb-4"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-amber-500">
+                        <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-amber-500 text-sm font-medium tracking-wide">
+                        Seu realismo começa na escolha do profissional.
+                    </span>
+                </motion.div>
                 <motion.h1
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
