@@ -1,0 +1,85 @@
+"use client"
+
+import { motion } from "framer-motion"
+import { CheckCircle2 } from "lucide-react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+
+const techSteps = [
+    { title: "Referência excelente", desc: "Boa luz, boa resolução, foco claro." },
+    { title: "Edição para tatuagem", desc: "Aumentar contraste local, reduzir “ruído” (pele porosa demais), separar planos." },
+    { title: "Mapa de valores", desc: "Pensar em 5–7 níveis de cinza (do quase preto ao quase pele)." },
+    { title: "Decidir o “ponto de foco”", desc: "Onde vai ter mais detalhe e nitidez." },
+    { title: "Definir tamanho mínimo e local", desc: "Áreas de muita fricção e sol tendem a perder nitidez mais rápido." },
+]
+
+export function SectionTechnical() {
+    return (
+        <section className="py-24 bg-zinc-50 px-4 border-y border-zinc-200">
+            <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                {/* Left: Content */}
+                <div className="space-y-8">
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <h2 className="text-3xl md:text-5xl font-heading font-bold text-zinc-900 mb-4">
+                            Como nasce o Realismo
+                        </h2>
+                        <div className="h-1 w-20 bg-primary rounded-full" />
+                    </motion.div>
+
+                    <div className="space-y-6">
+                        {techSteps.map((step, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="flex gap-4"
+                            >
+                                <CheckCircle2 className="text-primary shrink-0 mt-1" size={20} />
+                                <div>
+                                    <h4 className="text-zinc-900 font-bold">{step.title}</h4>
+                                    <p className="text-neutral-600 text-sm mt-1">{step.desc}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="pt-4"
+                    >
+                        <Link href="#contato">
+                            <Button size="lg" className="text-lg px-8 py-6 rounded-full bg-black text-white font-bold hover:bg-neutral-800 transition-all">
+                                📩 Quero Fazer Minha Tatuagem Realista
+                            </Button>
+                        </Link>
+                    </motion.div>
+                </div>
+
+                {/* Right: Technical Image/Visual */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="relative aspect-square rounded-2xl overflow-hidden bg-white border border-zinc-200 shadow-xl"
+                >
+                    {/* Abstract/Technical representation */}
+                    <div className="absolute inset-0 flex items-center justify-center text-neutral-400 font-mono text-sm p-8 text-center bg-[url('/grid-pattern.png')] bg-repeat opacity-20">
+                        [ESPAÇO PARA IMAGEM TÉCNICA: MAPA DE VALORES / STENCIL]
+                    </div>
+                    {/* Actual Image if available */}
+                    <img src="/tatoohero2.jpg" alt="Processo Técnico" className="object-cover w-full h-full opacity-80 hover:opacity-100 transition-opacity duration-500" />
+                </motion.div>
+
+            </div>
+        </section>
+    )
+}

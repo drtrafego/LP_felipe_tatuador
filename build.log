@@ -1,0 +1,179 @@
+
+> temp-app@0.1.0 build
+> next build
+
+▲ Next.js 16.1.2 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 6 errors:
+./node_modules/pg/lib/connection-parameters.js:3:13
+Module not found: Can't resolve 'dns'
+[0m [90m 1 |[39m [32m'use strict'[39m
+ [90m 2 |[39m
+[31m[1m>[22m[39m[90m 3 |[39m [36mconst[39m dns [33m=[39m require([32m'dns'[39m)
+ [90m   |[39m             [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 4 |[39m
+ [90m 5 |[39m [36mconst[39m defaults [33m=[39m require([32m'./defaults'[39m)
+ [90m 6 |[39m[0m
+
+
+
+Import trace:
+  Client Component Browser:
+    ./node_modules/pg/lib/connection-parameters.js [Client Component Browser]
+    ./node_modules/pg/lib/client.js [Client Component Browser]
+    ./node_modules/pg/lib/index.js [Client Component Browser]
+    ./node_modules/pg/esm/index.mjs [Client Component Browser]
+    ./src/lib/utils.ts [Client Component Browser]
+    ./src/components/ui/input.tsx [Client Component Browser]
+    ./src/components/contact-form.tsx [Client Component Browser]
+    ./src/components/contact-form.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./node_modules/pg-connection-string/index.js:84:70
+Module not found: Can't resolve 'fs'
+[0m [90m 82 |[39m
+ [90m 83 |[39m   [90m// Only try to load fs if we expect to read from the disk[39m
+[31m[1m>[22m[39m[90m 84 |[39m   [36mconst[39m fs [33m=[39m config[33m.[39msslcert [33m||[39m config[33m.[39msslkey [33m||[39m config[33m.[39msslrootcert [33m?[39m require([32m'fs'[39m) [33m:[39m [36mnull[39m
+ [90m    |[39m                                                                      [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 85 |[39m
+ [90m 86 |[39m   [36mif[39m (config[33m.[39msslcert) {
+ [90m 87 |[39m     config[33m.[39mssl[33m.[39mcert [33m=[39m fs[33m.[39mreadFileSync(config[33m.[39msslcert)[33m.[39mtoString()[0m
+
+
+
+Import trace:
+  Client Component Browser:
+    ./node_modules/pg-connection-string/index.js [Client Component Browser]
+    ./node_modules/pg/lib/connection-parameters.js [Client Component Browser]
+    ./node_modules/pg/lib/client.js [Client Component Browser]
+    ./node_modules/pg/lib/index.js [Client Component Browser]
+    ./node_modules/pg/esm/index.mjs [Client Component Browser]
+    ./src/lib/utils.ts [Client Component Browser]
+    ./src/components/ui/input.tsx [Client Component Browser]
+    ./src/components/contact-form.tsx [Client Component Browser]
+    ./src/components/contact-form.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./node_modules/pgpass/lib/index.js:4:10
+Module not found: Can't resolve 'fs'
+[0m [90m 2 |[39m
+ [90m 3 |[39m [36mvar[39m path [33m=[39m require([32m'path'[39m)
+[31m[1m>[22m[39m[90m 4 |[39m   [33m,[39m fs [33m=[39m require([32m'fs'[39m)
+ [90m   |[39m          [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 5 |[39m   [33m,[39m helper [33m=[39m require([32m'./helper.js'[39m)
+ [90m 6 |[39m [33m;[39m
+ [90m 7 |[39m[0m
+
+
+
+Import trace:
+  Client Component Browser:
+    ./node_modules/pgpass/lib/index.js [Client Component Browser]
+    ./node_modules/pg/lib/client.js [Client Component Browser]
+    ./node_modules/pg/lib/index.js [Client Component Browser]
+    ./node_modules/pg/esm/index.mjs [Client Component Browser]
+    ./src/lib/utils.ts [Client Component Browser]
+    ./src/components/ui/input.tsx [Client Component Browser]
+    ./src/components/contact-form.tsx [Client Component Browser]
+    ./src/components/contact-form.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./node_modules/pg/lib/connection.js:94:19
+Module not found: Can't resolve 'net'
+[0m [90m 92 |[39m       }
+ [90m 93 |[39m
+[31m[1m>[22m[39m[90m 94 |[39m       [36mconst[39m net [33m=[39m require([32m'net'[39m)
+ [90m    |[39m                   [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 95 |[39m       [36mif[39m (net[33m.[39misIP [33m&&[39m net[33m.[39misIP(host) [33m===[39m [35m0[39m) {
+ [90m 96 |[39m         options[33m.[39mservername [33m=[39m host
+ [90m 97 |[39m       }[0m
+
+
+
+Import trace:
+  Client Component Browser:
+    ./node_modules/pg/lib/connection.js [Client Component Browser]
+    ./node_modules/pg/lib/index.js [Client Component Browser]
+    ./node_modules/pg/esm/index.mjs [Client Component Browser]
+    ./src/lib/utils.ts [Client Component Browser]
+    ./src/components/ui/input.tsx [Client Component Browser]
+    ./src/components/contact-form.tsx [Client Component Browser]
+    ./src/components/contact-form.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./node_modules/pg/lib/stream.js:22:17
+Module not found: Can't resolve 'net'
+[0m [90m 20 |[39m [36mfunction[39m getNodejsStreamFuncs() {
+ [90m 21 |[39m   [36mfunction[39m getStream(ssl) {
+[31m[1m>[22m[39m[90m 22 |[39m     [36mconst[39m net [33m=[39m require([32m'net'[39m)
+ [90m    |[39m                 [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 23 |[39m     [36mreturn[39m [36mnew[39m net[33m.[39m[33mSocket[39m()
+ [90m 24 |[39m   }
+ [90m 25 |[39m[0m
+
+
+
+Import trace:
+  Client Component Browser:
+    ./node_modules/pg/lib/stream.js [Client Component Browser]
+    ./node_modules/pg/lib/connection.js [Client Component Browser]
+    ./node_modules/pg/lib/index.js [Client Component Browser]
+    ./node_modules/pg/esm/index.mjs [Client Component Browser]
+    ./src/lib/utils.ts [Client Component Browser]
+    ./src/components/ui/input.tsx [Client Component Browser]
+    ./src/components/contact-form.tsx [Client Component Browser]
+    ./src/components/contact-form.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./node_modules/pg/lib/stream.js:27:17
+Module not found: Can't resolve 'tls'
+[0m [90m 25 |[39m
+ [90m 26 |[39m   [36mfunction[39m getSecureStream(options) {
+[31m[1m>[22m[39m[90m 27 |[39m     [36mconst[39m tls [33m=[39m require([32m'tls'[39m)
+ [90m    |[39m                 [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 28 |[39m     [36mreturn[39m tls[33m.[39mconnect(options)
+ [90m 29 |[39m   }
+ [90m 30 |[39m   [36mreturn[39m {[0m
+
+
+
+Import trace:
+  Client Component Browser:
+    ./node_modules/pg/lib/stream.js [Client Component Browser]
+    ./node_modules/pg/lib/connection.js [Client Component Browser]
+    ./node_modules/pg/lib/index.js [Client Component Browser]
+    ./node_modules/pg/esm/index.mjs [Client Component Browser]
+    ./src/lib/utils.ts [Client Component Browser]
+    ./src/components/ui/input.tsx [Client Component Browser]
+    ./src/components/contact-form.tsx [Client Component Browser]
+    ./src/components/contact-form.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
