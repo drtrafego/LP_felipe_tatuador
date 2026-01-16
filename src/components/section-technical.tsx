@@ -8,14 +8,14 @@ import { Button } from "@/components/ui/button"
 const techSteps = [
     { title: "Referência excelente", desc: "Boa luz, boa resolução, foco claro." },
     { title: "Edição para tatuagem", desc: "Aumentar contraste local, reduzir “ruído” (pele porosa demais), separar planos." },
-    { title: "Mapa de valores", desc: "Pensar em 5–7 níveis de cinza (do quase preto ao quase pele)." },
+    { title: "Mapa de valores", desc: "Pensar em entre 5 e 7 níveis de cinza (do quase preto ao quase pele)." },
     { title: "Decidir o “ponto de foco”", desc: "Onde vai ter mais detalhe e nitidez." },
     { title: "Definir tamanho mínimo e local", desc: "Áreas de muita fricção e sol tendem a perder nitidez mais rápido." },
 ]
 
 export function SectionTechnical() {
     return (
-        <section className="py-24 bg-zinc-50 px-4 border-y border-zinc-200">
+        <section className="py-12 md:py-24 bg-zinc-50 px-4 border-y border-zinc-200">
             <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                 {/* Left: Content */}

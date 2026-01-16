@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 
 export function SectionPhilosophy() {
     return (
-        <section className="py-24 bg-white px-4 md:px-8 overflow-hidden">
+        <section className="py-12 md:py-24 bg-white px-4 md:px-8 overflow-hidden">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
                 {/* Left: Headline/Impact */}
@@ -29,7 +29,7 @@ export function SectionPhilosophy() {
                     className="space-y-6 text-lg md:text-xl text-neutral-600 font-light leading-relaxed"
                 >
                     <p>
-                        Em vez de depender de contornos fortes, ela depende de valores (escala de claro–escuro), transições suaves, texturas e controle de contraste para parecer tridimensional.
+                        Em vez de depender de contornos fortes, ela depende de valores (escala de claro/escuro), transições suaves, texturas e controle de contraste para parecer tridimensional.
                     </p>
                     <p>
                         Por isso ela é uma das vertentes mais exigentes — tanto no fazer quanto no manter bonito ao longo dos anos.

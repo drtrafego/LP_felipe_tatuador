@@ -12,7 +12,7 @@ const steps = [
     {
         icon: PencilRuler,
         title: "b) Construção da arte",
-        description: "A arte é montada respeitando proporção, luz/sombra e pontos de foco — pra não “achatar” depois de cicatrizado."
+        description: "A arte é montada respeitando proporção, luz/sombra e pontos de foco pra não “achatar” depois de cicatrizado."
     },
     {
         icon: Layers,
@@ -28,7 +28,7 @@ const steps = [
 
 export function SectionProcess() {
     return (
-        <section className="py-24 bg-white relative overflow-hidden">
+        <section className="py-12 md:py-24 bg-white relative overflow-hidden">
             {/* Background accent */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 

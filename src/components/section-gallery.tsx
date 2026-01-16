@@ -14,7 +14,7 @@ const galleryImages = [
 
 export function SectionGallery() {
     return (
-        <section className="py-24 bg-zinc-50 px-4">
+        <section className="py-12 md:py-24 bg-zinc-50 px-4">
             <div className="max-w-7xl mx-auto space-y-16">
 
                 {/* Header */}
