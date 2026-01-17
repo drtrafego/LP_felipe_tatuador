@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 import { Button } from "@/components/ui/button"
 import {
@@ -22,11 +24,10 @@ const formSchema = z.object({
     name: z.string().min(2, {
         message: "Nome deve ter pelo menos 2 caracteres.",
     }),
-    email: z.string().email({
-        message: "Email inválido.",
-    }),
-    phone: z.string().min(10, {
-        message: "Telefone deve ter pelo menos 10 dígitos (DDD + Número).",
+    phone: z.string({
+        required_error: "Telefone é obrigatório.",
+    }).min(10, {
+        message: "Telefone inválido.",
     }),
 })
 
@@ -38,7 +39,6 @@ export function ContactForm() {
         resolver: zodResolver(formSchema),
         defaultValues: {
             name: "",
-            email: "",
             phone: "",
         },
     })
@@ -91,19 +91,7 @@ export function ContactForm() {
                                 </FormItem>
                             )}
                         />
-                        <FormField
-                            control={form.control}
-                            name="email"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel className="text-foreground/90">Email</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="seu@email.com" {...field} type="email" className="bg-black/20 border-white/10 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/30 h-12" />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
+                        
                         <FormField
                             control={form.control}
                             name="phone"
@@ -111,17 +99,44 @@ export function ContactForm() {
                                 <FormItem>
                                     <FormLabel className="text-foreground/90">WhatsApp / Telefone</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="(11) 99999-9999" {...field} className="bg-black/20 border-white/10 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/30 h-12" />
+                                        <div className="phone-input-container">
+                                            <PhoneInput
+                                                placeholder="Enter phone number"
+                                                value={field.value}
+                                                onChange={field.onChange}
+                                                defaultCountry="BR"
+                                                className="flex h-12 w-full rounded-md border border-white/10 bg-black/20 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground/30 focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground items-center gap-2"
+                                            />
+                                        </div>
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
+
                         <Button type="submit" className="w-full font-bold text-sm md:text-lg h-12 bg-primary text-primary-foreground hover:bg-primary/90 transition-all md:uppercase tracking-wider" disabled={loading}>
                             {loading ? "Enviando..." : "✅ Pedir orçamento"}
                         </Button>
                     </form>
                 </Form>
+                <style jsx global>{`
+                    .PhoneInputInput {
+                        background: transparent;
+                        border: none;
+                        outline: none;
+                        color: inherit;
+                        width: 100%;
+                        height: 100%;
+                    }
+                    .PhoneInputCountrySelect {
+                        background: black;
+                        color: white;
+                    }
+                    .PhoneInputCountryIcon {
+                         width: 24px;
+                         height: 24px;
+                    }
+                `}</style>
             </CardContent>
         </Card>
     )
