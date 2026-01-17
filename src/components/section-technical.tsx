@@ -57,8 +57,8 @@ export function SectionTechnical() {
                         className="pt-4"
                     >
                         <Link href="#contato">
-                            <Button size="lg" className="text-lg px-8 py-6 rounded-full bg-black text-white font-bold hover:bg-neutral-800 transition-all">
-                                📩 Quero Fazer Minha Tatuagem Realista
+                            <Button size="lg" className="text-sm md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-full bg-black text-white font-bold hover:bg-neutral-800 transition-all">
+                                📩 Quero Minha Tattoo
                             </Button>
                         </Link>
                     </motion.div>

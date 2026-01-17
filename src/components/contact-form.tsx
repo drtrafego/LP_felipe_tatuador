@@ -117,8 +117,8 @@ export function ContactForm() {
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit" className="w-full font-bold text-lg h-12 bg-primary text-primary-foreground hover:bg-primary/90 transition-all uppercase tracking-wider" disabled={loading}>
-                            {loading ? "Enviando..." : "✅ Pedir orçamento agora"}
+                        <Button type="submit" className="w-full font-bold text-sm md:text-lg h-12 bg-primary text-primary-foreground hover:bg-primary/90 transition-all md:uppercase tracking-wider" disabled={loading}>
+                            {loading ? "Enviando..." : "✅ Pedir orçamento"}
                         </Button>
                     </form>
                 </Form>
