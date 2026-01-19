@@ -68,11 +68,11 @@ export default function Teste2Page() {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.6 }}
                     >
-                        <Link href="#contato">
-                            <Button size="lg" className="text-base md:text-xl px-8 md:px-12 py-6 md:py-8 rounded-full bg-green-600 hover:bg-green-500 text-white font-bold transition-all hover:scale-105 shadow-[0_0_40px_-5px_var(--green-500)] animate-pulse border-2 border-green-400/20">
+                        <Button asChild size="lg" className="text-base md:text-xl px-8 md:px-12 py-6 md:py-8 rounded-full bg-green-600 hover:bg-green-500 text-white font-bold transition-all hover:scale-105 shadow-[0_0_40px_-5px_var(--green-500)] animate-pulse border-2 border-green-400/20">
+                            <Link href="#contato">
                                 ✅ Quero Uma Tattoo Realista
-                            </Button>
-                        </Link>
+                            </Link>
+                        </Button>
                     </motion.div>
 
                     {/* Trust Seals - Below CTA */}
@@ -242,11 +242,11 @@ export default function Teste2Page() {
                             ))}
                         </div>
 
-                        <Link href="#contato">
-                            <Button size="lg" className="text-sm md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-full bg-white text-black font-bold hover:bg-neutral-200 transition-all">
+                        <Button asChild size="lg" className="text-sm md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-full bg-white text-black font-bold hover:bg-neutral-200 transition-all">
+                            <Link href="#contato">
                                 📩 Quero Minha Tattoo
-                            </Button>
-                        </Link>
+                            </Link>
+                        </Button>
                     </div>
 
                     {/* Right: Image */}
@@ -676,11 +676,11 @@ export default function Teste2Page() {
 
                     {/* CTA Button after FAQ */}
                     <div className="flex justify-center mt-12 pt-8 border-t border-zinc-800">
-                        <Link href="#contato">
-                            <Button size="lg" className="text-base md:text-lg px-8 md:px-10 py-6 rounded-full bg-white text-black font-bold hover:bg-neutral-200 transition-all shadow-lg animate-pulse">
+                        <Button asChild size="lg" className="text-base md:text-lg px-8 md:px-10 py-6 rounded-full bg-white text-black font-bold hover:bg-neutral-200 transition-all shadow-lg animate-pulse">
+                            <Link href="#contato">
                                 📩 Pedir Orçamento Agora
-                            </Button>
-                        </Link>
+                            </Link>
+                        </Button>
                     </div>
                 </div>
             </section>
