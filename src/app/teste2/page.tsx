@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Link from "next/link"
+
 import { Button } from "@/components/ui/button"
 import { ContactForm } from "@/components/contact-form"
 
@@ -69,9 +69,9 @@ export default function Teste2Page() {
                         transition={{ duration: 0.5, delay: 0.6 }}
                     >
                         <Button asChild size="lg" className="text-base md:text-xl px-8 md:px-12 py-6 md:py-8 rounded-full bg-green-600 hover:bg-green-500 text-white font-bold transition-all hover:scale-105 shadow-[0_0_40px_-5px_var(--green-500)] animate-pulse border-2 border-green-400/20">
-                            <Link href="#contato">
+                            <a href="#contato">
                                 ✅ Quero Uma Tattoo Realista
-                            </Link>
+                            </a>
                         </Button>
                     </motion.div>
 
@@ -243,9 +243,9 @@ export default function Teste2Page() {
                         </div>
 
                         <Button asChild size="lg" className="text-sm md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-full bg-white text-black font-bold hover:bg-neutral-200 transition-all">
-                            <Link href="#contato">
+                            <a href="#contato">
                                 📩 Quero Minha Tattoo
-                            </Link>
+                            </a>
                         </Button>
                     </div>
 
@@ -377,9 +377,9 @@ export default function Teste2Page() {
                     {/* CTA Button after Gallery */}
                     <div className="flex justify-center mt-16">
                         <Button asChild size="lg" className="text-base md:text-xl px-8 md:px-12 py-6 md:py-8 rounded-full bg-white text-black font-bold hover:bg-neutral-200 transition-all shadow-lg animate-pulse">
-                            <Link href="#contato">
+                            <a href="#contato">
                                 🖼️ Quero um projeto exclusivo
-                            </Link>
+                            </a>
                         </Button>
                     </div>
 
@@ -687,9 +687,9 @@ export default function Teste2Page() {
                     {/* CTA Button after FAQ */}
                     <div className="flex justify-center mt-12 pt-8 border-t border-zinc-800">
                         <Button asChild size="lg" className="text-base md:text-lg px-8 md:px-10 py-6 rounded-full bg-white text-black font-bold hover:bg-neutral-200 transition-all shadow-lg animate-pulse">
-                            <Link href="#contato">
+                            <a href="#contato">
                                 📩 Pedir Orçamento Agora
-                            </Link>
+                            </a>
                         </Button>
                     </div>
                 </div>
