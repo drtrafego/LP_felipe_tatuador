@@ -10,21 +10,21 @@ export default function Teste2Page() {
         <main className="min-h-screen bg-black text-white selection:bg-primary selection:text-black font-sans">
 
             {/* Hero Section with Background Image */}
-            <section className="relative min-h-screen flex flex-col md:justify-center overflow-hidden bg-black">
+            <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-black">
 
                 {/* Background Image Container */}
-                <div className="relative w-full h-[55vh] md:absolute md:inset-0 z-0">
+                <div className="absolute inset-0 z-0">
                     <img
                         src="/IMG_2317.jpg"
                         alt="Background Tattoo Art"
-                        className="w-full h-full object-cover object-center opacity-80 md:opacity-60"
+                        className="w-full h-full object-cover object-center opacity-70 md:opacity-60"
                     />
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/0 via-black/0 to-transparent md:from-black md:via-black/50 md:to-black/30" />
+                    {/* Gradient Overlay - Stronger on mobile for readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/40 md:from-black md:via-black/50 md:to-black/30" />
                 </div>
 
                 {/* Content Container */}
-                <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center space-y-6 md:space-y-8 pt-8 md:pt-0">
+                <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center space-y-6 md:space-y-8 pt-20 md:pt-0">
 
                     {/* Badge */}
                     <motion.div
@@ -138,7 +138,7 @@ export default function Teste2Page() {
 
                         {/* Experience Badge */}
                         <div className="inline-flex items-center gap-3 bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-3">
-                            <span className="text-3xl font-bold text-primary">10+</span>
+                            <span className="text-3xl font-bold text-primary">8+</span>
                             <span className="text-sm text-neutral-400">Anos de<br />Experiência</span>
                         </div>
                     </div>
@@ -337,7 +337,7 @@ export default function Teste2Page() {
                                 <img src="/IMG_5694_jpg.jpg" alt="Tattoo 6" className="w-full aspect-[3/4] object-cover" />
                             </div>
                             <div className="absolute bottom-8 left-0 -translate-x-1/4 w-20 h-8 bg-gradient-to-b from-stone-200 to-stone-300/80 rounded-[2px] rotate-45 shadow-md" style={{ clipPath: 'polygon(5% 10%, 95% 0%, 100% 90%, 0% 100%)' }} />
-                            <div className="absolute -bottom-4 -right-1 md:-right-2 bg-yellow-300 text-black text-[9px] md:text-[10px] font-bold px-2 py-1 rotate-6 shadow-md">
+                            <div className="absolute bottom-6 right-4 bg-yellow-300 text-black text-[9px] md:text-[10px] font-bold px-2 py-1 rotate-6 shadow-md">
                                 OBRIGADO!
                             </div>
                         </div>
@@ -373,6 +373,16 @@ export default function Teste2Page() {
                         </div>
 
                     </div>
+
+                    {/* CTA Button after Gallery */}
+                    <div className="flex justify-center mt-16">
+                        <Button asChild size="lg" className="text-base md:text-xl px-8 md:px-12 py-6 md:py-8 rounded-full bg-white text-black font-bold hover:bg-neutral-200 transition-all shadow-lg animate-pulse">
+                            <Link href="#contato">
+                                🖼️ Quero um projeto exclusivo
+                            </Link>
+                        </Button>
+                    </div>
+
                 </div>
             </section>
 
@@ -617,7 +627,7 @@ export default function Teste2Page() {
                                 </div>
                                 <div className="flex items-center gap-3 text-neutral-400">
                                     <span className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-white">📍</span>
-                                    <span>São Paulo, SP</span>
+                                    <span>Avenida Andrômeda número 1280, 1º andar, sala 3<br />Jardim Satélite, São José dos Campos<br />Cep 12230-000</span>
                                 </div>
                                 <div className="flex items-center gap-3 text-neutral-400">
                                     <span className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-white">📱</span>

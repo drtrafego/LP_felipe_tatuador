@@ -79,6 +79,21 @@ export function SectionContact() {
                                 <li>Se fizer sentido, agendamos consulta/sessão e fechamos detalhes</li>
                             </ul>
                         </div>
+
+                        <div className="space-y-4 text-sm pt-4">
+                            <div className="flex items-center gap-3 text-neutral-600">
+                                <span className="w-8 h-8 rounded-full bg-zinc-100 flex items-center justify-center text-black border border-zinc-200">📧</span>
+                                <span>contato@felipetattoo.com</span>
+                            </div>
+                            <div className="flex items-center gap-3 text-neutral-600">
+                                <span className="w-8 h-8 rounded-full bg-zinc-100 flex items-center justify-center text-black border border-zinc-200">📍</span>
+                                <span>Avenida Andrômeda número 1280, 1º andar, sala 3<br />Jardim Satélite, São José dos Campos<br />Cep 12230-000</span>
+                            </div>
+                            <div className="flex items-center gap-3 text-neutral-600">
+                                <span className="w-8 h-8 rounded-full bg-zinc-100 flex items-center justify-center text-black border border-zinc-200">📱</span>
+                                <span>@felipetattoo</span>
+                            </div>
+                        </div>
                     </motion.div>
 
                     {/* FAQ */}
