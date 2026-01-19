@@ -85,7 +85,7 @@ export function ContactForm() {
                                         <Input
                                             placeholder="Ex: Felipe Silva"
                                             {...field}
-                                            className="bg-white/60 border-zinc-300 focus:border-amber-500/50 text-zinc-900 placeholder:text-zinc-500/50 h-12"
+                                            className="bg-white border-zinc-300 focus:border-amber-500 text-zinc-900 placeholder:text-zinc-400 h-12 text-base"
                                         />
                                     </FormControl>
                                     <FormMessage />
@@ -106,7 +106,7 @@ export function ContactForm() {
                                                 value={field.value}
                                                 onChange={field.onChange}
                                                 defaultCountry="BR"
-                                                className="flex h-12 w-full rounded-md border border-zinc-300 bg-white/60 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-zinc-500/50 focus-within:border-amber-500/50 focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-zinc-900 items-center gap-2"
+                                                className="flex h-12 w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-zinc-400 focus-within:border-amber-500 focus-within:ring-1 focus-within:ring-amber-500 disabled:cursor-not-allowed disabled:opacity-50 text-zinc-900 items-center gap-2"
                                             />
                                         </div>
                                     </FormControl>
@@ -115,7 +115,7 @@ export function ContactForm() {
                             )}
                         />
 
-                        <Button type="submit" className="w-full font-bold text-sm md:text-lg h-12 bg-primary text-primary-foreground hover:bg-primary/90 transition-all md:uppercase tracking-wider" disabled={loading}>
+                        <Button type="submit" className="w-full font-bold text-sm md:text-lg h-12 bg-primary text-black hover:bg-primary/90 transition-all md:uppercase tracking-wider shadow-lg" disabled={loading}>
                             {loading ? "Enviando..." : "✅ Pedir orçamento"}
                         </Button>
                     </form>
@@ -129,15 +129,16 @@ export function ContactForm() {
                         width: 100%;
                         height: 100%;
                         font-family: inherit;
+                        font-size: 16px; /* text-base */
                     }
                     .PhoneInputInput::placeholder {
-                         color: rgba(113, 113, 122, 0.5); /* zinc-500/50 */
+                         color: #a1a1aa; /* zinc-400 */
                     }
                     .PhoneInputCountrySelect {
                         background: white;
                         color: black;
                         border-radius: 4px;
-                        opacity: 0.8;
+                        opacity: 0; /* Hide the select but keep it clickable */
                     }
                     .PhoneInputCountryIcon {
                          width: 24px;
