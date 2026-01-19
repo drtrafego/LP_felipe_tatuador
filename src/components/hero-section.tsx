@@ -66,7 +66,11 @@ export function Hero() {
                     const delay = (2 - distFromCenter) * 0.4 + 0.5
 
                     // Height/Scale Logic
-                    const scaleFactor = 1 + (distFromCenter * 0.20)
+                    // User wants Center (Artist) to be BIGGER, and Tattoos SMALLER.
+                    // Center: distFromCenter = 0 -> Scale = 1.3
+                    // Sides: distFromCenter = 1 -> Scale = 1.15
+                    // Far Sides: distFromCenter = 2 -> Scale = 1.0
+                    const scaleFactor = 1.3 - (distFromCenter * 0.15)
 
                     const offset = index - 2
                     const rotateY = offset * -15 // Softer 15deg
