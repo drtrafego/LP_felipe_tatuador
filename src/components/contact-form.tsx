@@ -3,11 +3,13 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import 'react-phone-number-input/style.css'
 // @ts-ignore
 import PhoneInput from 'react-phone-number-input'
+// @ts-ignore
+import { Country } from 'react-phone-number-input'
 
 import { Button } from "@/components/ui/button"
 import {
@@ -39,6 +41,19 @@ export function ContactForm() {
             phone: "",
         },
     })
+
+    const [defaultCountry, setDefaultCountry] = useState<Country>("BR")
+
+    useEffect(() => {
+        fetch("https://ipapi.co/json/")
+            .then((res) => res.json())
+            .then((data) => {
+                if (data && data.country_code) {
+                    setDefaultCountry(data.country_code as Country)
+                }
+            })
+            .catch((error) => console.error("Error fetching country:", error))
+    }, [])
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setLoading(true)
@@ -105,7 +120,7 @@ export function ContactForm() {
                                                 placeholder="Ex: (11) 99999-9999"
                                                 value={field.value}
                                                 onChange={field.onChange}
-                                                defaultCountry="BR"
+                                                defaultCountry={defaultCountry}
                                                 className="flex h-12 w-full rounded-md border !border-zinc-300 !bg-white px-3 py-2 text-base md:text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium !placeholder-zinc-400 focus-within:!border-amber-500 focus-within:!ring-1 focus-within:!ring-amber-500 disabled:cursor-not-allowed disabled:opacity-50 !text-zinc-900 items-center gap-2"
                                             />
                                         </div>
