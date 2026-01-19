@@ -10,21 +10,21 @@ export default function Teste2Page() {
         <main className="min-h-screen bg-black text-white selection:bg-primary selection:text-black font-sans">
 
             {/* Hero Section with Background Image */}
-            <section className="relative min-h-[80vh] md:min-h-screen flex flex-col items-center justify-center overflow-hidden py-12 md:py-0">
+            <section className="relative min-h-screen flex flex-col md:justify-center overflow-hidden bg-black">
 
-                {/* Background Image */}
-                <div className="absolute inset-0 z-0">
+                {/* Background Image Container */}
+                <div className="relative w-full h-[55vh] md:absolute md:inset-0 z-0">
                     <img
                         src="/IMG_2317.jpg"
                         alt="Background Tattoo Art"
-                        className="w-full h-full object-contain opacity-60"
+                        className="w-full h-full object-cover object-center opacity-80 md:opacity-60"
                     />
-                    {/* Gradient Overlay for Text Readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/30" />
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/0 via-black/0 to-transparent md:from-black md:via-black/50 md:to-black/30" />
                 </div>
 
                 {/* Content Container */}
-                <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center space-y-6 md:space-y-8">
+                <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center space-y-6 md:space-y-8 pt-8 md:pt-0">
 
                     {/* Badge */}
                     <motion.div
@@ -124,15 +124,15 @@ export default function Teste2Page() {
                         <div className="space-y-6 text-neutral-400">
                             <p className="flex items-start gap-3">
                                 <span className="text-amber-500 text-xl mt-1">★</span>
-                                <span>Antes de tatuar, eu preenchia cadernos com estudos de luz, sombra e anatomia. O preto e cinza sempre me atraiu pela capacidade de criar profundidade sem cor. Minha paixão por desenho evoluiu para uma obsessão: transformar pele em tela viva.</span>
+                                <span>Meu nome é Felipe, tenho 28 anos e sou de São José dos Campos. Venho de uma família criativa — mãe professora de artes e avô arquiteto. Desenho desde os 3 anos e cheguei a cursar 3 anos de Arquitetura, mas a paixão pela arte falou mais alto.</span>
                             </p>
                             <p className="flex items-start gap-3">
                                 <span className="text-amber-500 text-xl mt-1">★</span>
-                                <span>Tatuar é mais do que habilidade; exige disciplina e estudo constante. Passei anos aperfeiçoando traços limpos e contrastes precisos. No realismo, cada linha tem intenção — e é isso que torna cada peça inesquecível.</span>
+                                <span>Migrei do papel para a pele influenciado por amigos e pelo meu mentor de desenho. Comecei aos 20 anos, "na cara e na coragem", treinando em conhecidos. A arquitetura me deu noção de projeto, mas a tatuagem me deu propósito.</span>
                             </p>
                             <p className="flex items-start gap-3">
                                 <span className="text-amber-500 text-xl mt-1">★</span>
-                                <span>Hoje, trabalho em meu estúdio privado, um espaço pensado para foco e criatividade. Aqui, os clientes se sentem confortáveis e engajados no processo, garantindo que cada peça seja feita para durar a vida toda.</span>
+                                <span>Hoje, com 8 anos de experiência e 7 anos de estúdio próprio, foco no Realismo Preto e Cinza. Busco não só a técnica perfeita, mas um olhar cuidadoso e clínico para entregar uma arte que dure a vida toda.</span>
                             </p>
                         </div>
 
