@@ -45,8 +45,24 @@ export function SectionContact() {
         <section id="contato" className="py-12 md:py-24 bg-white px-4">
             <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
 
-                {/* Left: Transformation Context & FAQ */}
-                <div className="space-y-12">
+                {/* Right: Contact Form (Moved First for Mobile) */}
+                <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="bg-zinc-50 p-6 md:p-10 rounded-3xl border border-zinc-200 shadow-xl order-1 lg:order-2"
+                >
+                    <div className="mb-8">
+                        <h3 className="text-2xl font-bold text-zinc-900 mb-2">Pedir orçamento agora</h3>
+                        <p className="text-sm text-neutral-500">Atendimento direto. Sem enrolação. Sem surpresa no final.</p>
+                    </div>
+
+                    <ContactForm />
+
+                </motion.div>
+
+                {/* Left: Transformation Context & FAQ (Now Second on Mobile) */}
+                <div className="space-y-12 order-2 lg:order-1">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -80,24 +96,16 @@ export function SectionContact() {
                                 </AccordionItem>
                             ))}
                         </Accordion>
+                        {/* New CTA Button after FAQ */}
+                        <div className="pt-4">
+                            <a href="#contato" className="block w-full text-center">
+                                <button className="w-full bg-black text-white font-bold py-4 rounded-lg hover:bg-neutral-800 transition-all shadow-lg">
+                                    📩 Pedir Orçamento Agora
+                                </button>
+                            </a>
+                        </div>
                     </div>
                 </div>
-
-                {/* Right: Contact Form */}
-                <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="bg-zinc-50 p-6 md:p-10 rounded-3xl border border-zinc-200 shadow-xl"
-                >
-                    <div className="mb-8">
-                        <h3 className="text-2xl font-bold text-zinc-900 mb-2">Pedir orçamento agora</h3>
-                        <p className="text-sm text-neutral-500">Atendimento direto. Sem enrolação. Sem surpresa no final.</p>
-                    </div>
-
-                    <ContactForm />
-
-                </motion.div>
 
             </div>
 
