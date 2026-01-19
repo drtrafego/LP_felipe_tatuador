@@ -80,9 +80,13 @@ export function ContactForm() {
                             name="name"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel className="text-foreground/90">Nome Completo</FormLabel>
+                                    <FormLabel className="text-zinc-800 font-semibold">Nome Completo</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Ex: Felipe Silva" {...field} className="bg-black/20 border-white/10 focus:border-primary/50 text-foreground placeholder:text-muted-foreground/30 h-12" />
+                                        <Input
+                                            placeholder="Ex: Felipe Silva"
+                                            {...field}
+                                            className="bg-white/60 border-zinc-300 focus:border-amber-500/50 text-zinc-900 placeholder:text-zinc-500/50 h-12"
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -94,7 +98,7 @@ export function ContactForm() {
                             name="phone"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel className="text-foreground/90">WhatsApp / Telefone</FormLabel>
+                                    <FormLabel className="text-zinc-800 font-semibold">WhatsApp / Telefone</FormLabel>
                                     <FormControl>
                                         <div className="phone-input-container">
                                             <PhoneInput
@@ -102,7 +106,7 @@ export function ContactForm() {
                                                 value={field.value}
                                                 onChange={field.onChange}
                                                 defaultCountry="BR"
-                                                className="flex h-12 w-full rounded-md border border-white/10 bg-black/20 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground/30 focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground items-center gap-2"
+                                                className="flex h-12 w-full rounded-md border border-zinc-300 bg-white/60 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-zinc-500/50 focus-within:border-amber-500/50 focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-zinc-900 items-center gap-2"
                                             />
                                         </div>
                                     </FormControl>
