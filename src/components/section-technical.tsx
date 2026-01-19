@@ -76,7 +76,7 @@ export function SectionTechnical() {
                         [ESPAÇO PARA IMAGEM TÉCNICA: MAPA DE VALORES / STENCIL]
                     </div>
                     {/* Actual Image if available */}
-                    <img src="/tatoohero6.jpg" alt="Processo Técnico" className="object-cover w-full h-full opacity-80 hover:opacity-100 transition-opacity duration-500" />
+                    <img src="/IMG_5868_jpg.jpg" alt="Processo Técnico" className="object-cover w-full h-full opacity-80 hover:opacity-100 transition-opacity duration-500" />
                 </motion.div>
 
             </div>

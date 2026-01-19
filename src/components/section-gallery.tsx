@@ -9,7 +9,7 @@ const galleryImages = [
     "/IMG_2317.jpg",
     "/IMG_5694_jpg.jpg",
     "/IMG_7776.jpg",
-    "/tatoohero5.JPG",
+    "/IMG_6194.jpg",
     "/tatoohero2.jpg",
     "/tatoohero4.jpg",
 ]
