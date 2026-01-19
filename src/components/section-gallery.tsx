@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
 
 // Placeholder images
 const galleryImages = [
@@ -70,6 +71,16 @@ export function SectionGallery() {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* CTA Button after Gallery Grid */}
+                <div className="flex justify-center mt-12">
+                    <a href="#contato">
+                        <Button size="lg" className="text-base md:text-xl px-8 md:px-12 py-6 md:py-8 rounded-full bg-black text-white font-bold hover:bg-neutral-800 transition-all shadow-lg animate-pulse">
+                            🖼️ Quero um projeto exclusivo
+                        </Button>
+                    </a>
+                </div>
+
 
             </div>
         </section>

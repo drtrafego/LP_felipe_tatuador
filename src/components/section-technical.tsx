@@ -50,18 +50,13 @@ export function SectionTechnical() {
                         ))}
                     </div>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="pt-4"
-                    >
-                        <Link href="#contato">
+                    <div className="pt-4">
+                        <a href="#contato">
                             <Button size="lg" className="text-sm md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-full bg-black text-white font-bold hover:bg-neutral-800 transition-all">
                                 📩 Quero Minha Tattoo
                             </Button>
-                        </Link>
-                    </motion.div>
+                        </a>
+                    </div>
                 </div>
 
                 {/* Right: Technical Image/Visual */}

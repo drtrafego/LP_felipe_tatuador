@@ -117,11 +117,11 @@ export function Hero() {
                 transition={{ duration: 0.5, delay: 2.8 }}
                 className="order-3 mt-4 md:mt-12 z-30 flex flex-col items-center gap-6"
             >
-                <Link href="#contato">
+                <a href="#contato">
                     <Button size="lg" className="text-base md:text-lg px-8 md:px-12 py-6 md:py-8 rounded-full bg-green-600 hover:bg-green-500 text-white font-bold transition-all hover:scale-105 shadow-[0_0_30px_-5px_var(--green-500)] animate-pulse">
                         ✅ Quero Uma Tattoo Realista
                     </Button>
-                </Link>
+                </a>
 
                 {/* Seals */}
                 <div className="flex flex-col md:flex-row items-center justify-center gap-y-1 md:gap-x-6 text-xs md:text-sm text-neutral-400 font-light max-w-lg text-center">
