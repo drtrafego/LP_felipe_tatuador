@@ -96,7 +96,7 @@ export function Hero() {
                             className={`relative rounded-xl md:rounded-2xl overflow-hidden border border-white/10 shadow-2xl shrink-0
                         ${isCenter
                                     ? "z-30 w-32 md:w-96 aspect-[3/4] shadow-[0_0_60px_rgba(255,255,255,0.15)] brightness-125 saturate-110"
-                                    : "z-20 w-32 md:w-96 aspect-[3/4] grayscale-[80%] brightness-75 hover:grayscale-0 transition-all duration-500"
+                                    : "z-20 w-14 md:w-96 aspect-[3/4] grayscale-[80%] brightness-75 hover:grayscale-0 transition-all duration-500"
                                 }
                     `}
                             style={{

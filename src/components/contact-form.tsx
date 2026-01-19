@@ -102,7 +102,7 @@ export function ContactForm() {
                                     <FormControl>
                                         <div className="phone-input-container">
                                             <PhoneInput
-                                                placeholder="Enter phone number"
+                                                placeholder="Ex: (11) 99999-9999"
                                                 value={field.value}
                                                 onChange={field.onChange}
                                                 defaultCountry="BR"
@@ -128,14 +128,21 @@ export function ContactForm() {
                         color: inherit;
                         width: 100%;
                         height: 100%;
+                        font-family: inherit;
+                    }
+                    .PhoneInputInput::placeholder {
+                         color: rgba(113, 113, 122, 0.5); /* zinc-500/50 */
                     }
                     .PhoneInputCountrySelect {
-                        background: black;
-                        color: white;
+                        background: white;
+                        color: black;
+                        border-radius: 4px;
+                        opacity: 0.8;
                     }
                     .PhoneInputCountryIcon {
                          width: 24px;
                          height: 24px;
+                         box-shadow: 0 1px 2px rgba(0,0,0,0.1);
                     }
                 `}</style>
             </CardContent>
