@@ -10,6 +10,8 @@ import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 // @ts-ignore
 import { Country } from 'react-phone-number-input'
+import { getExampleNumber } from 'libphonenumber-js'
+import examples from 'libphonenumber-js/examples.mobile.json'
 
 import { Button } from "@/components/ui/button"
 import {
@@ -42,18 +44,27 @@ export function ContactForm() {
         },
     })
 
-    const [defaultCountry, setDefaultCountry] = useState<Country>("BR")
+    const [country, setCountry] = useState<Country>("BR")
 
     useEffect(() => {
         fetch("https://ipapi.co/json/")
             .then((res) => res.json())
             .then((data) => {
                 if (data && data.country_code) {
-                    setDefaultCountry(data.country_code as Country)
+                    setCountry(data.country_code as Country)
                 }
             })
             .catch((error) => console.error("Error fetching country:", error))
     }, [])
+
+    const getPhoneNumberPlaceholder = (countryCode: Country) => {
+        try {
+            const phoneNumber = getExampleNumber(countryCode, examples)
+            return phoneNumber ? phoneNumber.formatNational() : "Ex: (11) 99999-9999"
+        } catch (error) {
+            return "Ex: (11) 99999-9999"
+        }
+    }
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setLoading(true)
@@ -117,10 +128,13 @@ export function ContactForm() {
                                     <FormControl>
                                         <div className="phone-input-container">
                                             <PhoneInput
-                                                placeholder="Ex: (11) 99999-9999"
+                                                placeholder={getPhoneNumberPlaceholder(country)}
                                                 value={field.value}
                                                 onChange={field.onChange}
-                                                defaultCountry={defaultCountry}
+                                                defaultCountry="BR"
+                                                width="100%"
+                                                country={country}
+                                                onCountryChange={(c) => { if (c) setCountry(c) }}
                                                 className="flex h-12 w-full rounded-md border !border-zinc-300 !bg-white px-3 py-2 text-base md:text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium !placeholder-zinc-400 focus-within:!border-amber-500 focus-within:!ring-1 focus-within:!ring-amber-500 disabled:cursor-not-allowed disabled:opacity-50 !text-zinc-900 items-center gap-2"
                                             />
                                         </div>
