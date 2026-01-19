@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button"
 
 const images = [
     "/tatoohero1.jpg",
-    "/tatoohero2.jpg",
+    "/tatoohero5.JPG",
     "/clientehero.png",
     "/tatoohero3.jpg",
-    "/tatoohero4.jpg",
+    "/IMG_7776.jpg",
 ]
 
 export function Hero() {
@@ -66,11 +66,9 @@ export function Hero() {
                     const delay = (2 - distFromCenter) * 0.4 + 0.5
 
                     // Height/Scale Logic
-                    // User wants Center (Artist) to be BIGGER, and Tattoos SMALLER.
-                    // Center: distFromCenter = 0 -> Scale = 1.3
-                    // Sides: distFromCenter = 1 -> Scale = 1.15
-                    // Far Sides: distFromCenter = 2 -> Scale = 1.0
-                    const scaleFactor = 1.3 - (distFromCenter * 0.15)
+                    // Center (Artist) is now BIGGER (1.45) for emphasis
+                    // Sides drop off faster to highlight center more
+                    const scaleFactor = isCenter ? 1.45 : 1.3 - (distFromCenter * 0.15)
 
                     const offset = index - 2
                     const rotateY = offset * -15 // Softer 15deg
@@ -97,7 +95,7 @@ export function Hero() {
                             }}
                             className={`relative rounded-xl md:rounded-2xl overflow-hidden border border-white/10 shadow-2xl shrink-0
                         ${isCenter
-                                    ? "z-30 w-20 md:w-64 aspect-[3/4] shadow-[0_0_40px_rgba(34,197,94,0.15)] brightness-110"
+                                    ? "z-30 w-20 md:w-64 aspect-[3/4] shadow-[0_0_60px_rgba(255,255,255,0.15)] brightness-125 saturate-110"
                                     : "z-20 w-20 md:w-64 aspect-[3/4] grayscale-[80%] brightness-75 hover:grayscale-0 transition-all duration-500"
                                 }
                     `}

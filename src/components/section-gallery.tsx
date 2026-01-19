@@ -10,6 +10,8 @@ const galleryImages = [
     "/IMG_5694_jpg.jpg",
     "/IMG_7776.jpg",
     "/tatoohero5.JPG",
+    "/tatoohero2.jpg",
+    "/tatoohero4.jpg",
 ]
 
 export function SectionGallery() {
