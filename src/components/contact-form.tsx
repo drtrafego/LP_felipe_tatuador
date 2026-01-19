@@ -25,11 +25,7 @@ const formSchema = z.object({
     name: z.string().min(2, {
         message: "Nome deve ter pelo menos 2 caracteres.",
     }),
-    phone: z.string({
-        required_error: "Telefone é obrigatório.",
-    }).min(10, {
-        message: "Telefone inválido.",
-    }),
+    phone: z.string().min(1, "Telefone é obrigatório.").min(10, "Telefone inválido."),
 })
 
 export function ContactForm() {
