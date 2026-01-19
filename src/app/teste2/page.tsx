@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { ContactForm } from "@/components/contact-form"
 
 export default function Teste2Page() {
     return (
@@ -588,58 +589,7 @@ export default function Teste2Page() {
                 </div>
             </section>
 
-            {/* FAQ Section */}
-            <section className="py-12 md:py-24 bg-zinc-900 px-4">
-                <div className="max-w-5xl mx-auto">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-
-                        {/* Left: Title */}
-                        <div>
-                            <h2 className="text-4xl md:text-5xl font-heading font-light text-zinc-300 mb-4">
-                                Dúvidas<br /><span className="font-bold text-white">Frequentes</span>
-                            </h2>
-                            <p className="text-neutral-500">
-                                Algumas coisas que você pode querer saber antes de agendar.
-                            </p>
-                        </div>
-
-                        {/* Right: FAQ Items */}
-                        <div className="space-y-4">
-                            {[
-                                { q: "Quanto tempo leva pra cicatrizar?", a: "Em geral, 2–4 semanas para sinais iniciais. O processo completo varia conforme tamanho, local e cuidados." },
-                                { q: "Realismo desbota?", a: "Toda tattoo envelhece, mas a preservação do detalhe depende de aplicação correta, contraste bem construído e proteção solar." },
-                                { q: "Dói muito?", a: "Depende do local e da sua tolerância. Na avaliação eu te digo o que esperar." },
-                                { q: "Dá pra fazer igual à foto?", a: "O objetivo é fidelidade realista, mas a pele não é papel. Eu ajusto para ficar bonito na pele." },
-                                { q: "Vocês fazem orçamento online?", a: "Sim, envio valor aproximado com base nas informações e depois confirmo ao avaliar o projeto." },
-                                { q: "Minha pele serve? (melasma, cicatriz, etc)", a: "Serve, mas pode exigir adaptação (tamanho, contraste, menos microdetalhe)." },
-                                { q: "Quantas sessões?", a: "A quantidade de sessões depende de dois fatores, o tamanho da tatuagem, mas o principal é o limiar de dor que você pode suportar." },
-                            ].map((item, i) => (
-                                <details key={i} className="group bg-zinc-800/50 border border-zinc-700 rounded-xl overflow-hidden">
-                                    <summary className="flex items-center justify-between p-4 cursor-pointer text-white font-medium hover:bg-zinc-800 transition-colors">
-                                        {item.q}
-                                        <span className="text-neutral-500 group-open:rotate-45 transition-transform">+</span>
-                                    </summary>
-                                    <div className="px-4 pb-4 text-neutral-400 text-sm">
-                                        {item.a}
-                                    </div>
-                                </details>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Quote Section */}
-            <section className="py-12 md:py-24 bg-zinc-950 px-4">
-                <div className="max-w-4xl mx-auto text-center">
-                    <blockquote className="text-2xl md:text-3xl font-heading font-light text-zinc-300 leading-relaxed italic">
-                        "Tinta preta é atemporal — não segue tendências nem sai de moda. <br className="hidden md:block" />
-                        É sobre <span className="text-white font-medium not-italic">ousadia, permanência</span> e criar arte que resiste ao tempo."
-                    </blockquote>
-                </div>
-            </section>
-
-            {/* Contact Section */}
+            {/* Contact Section (Moved Before FAQ) */}
             <section id="contato" className="py-12 md:py-24 bg-zinc-900 px-4">
                 <div className="max-w-6xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -678,23 +628,70 @@ export default function Teste2Page() {
 
                         {/* Right: Form */}
                         <div className="bg-zinc-800/50 border border-zinc-700 rounded-2xl p-6 md:p-8">
-                            <form className="space-y-5">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label className="block text-sm text-neutral-400 mb-2">Nome</label>
-                                        <input type="text" placeholder="Seu nome" className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-4 py-3 text-white placeholder:text-neutral-600 focus:border-primary focus:outline-none" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm text-neutral-400 mb-2">Telefone</label>
-                                        <input type="tel" placeholder="(11) 99999-9999" className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-4 py-3 text-white placeholder:text-neutral-600 focus:border-primary focus:outline-none" />
-                                    </div>
-                                </div>
-                                <Button type="submit" className="w-full bg-primary text-black font-bold py-4 rounded-lg hover:bg-primary/90 transition-all">
-                                    ✅ Pedir Orçamento
-                                </Button>
-                            </form>
+                            {/* Using the updated ContactForm component which has the logic and improved styling */}
+                            <ContactForm />
                         </div>
                     </div>
+                </div>
+            </section>
+
+            {/* FAQ Section */}
+            <section className="py-12 md:py-24 bg-zinc-900 px-4">
+                <div className="max-w-5xl mx-auto">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+                        {/* Left: Title */}
+                        <div>
+                            <h2 className="text-4xl md:text-5xl font-heading font-light text-zinc-300 mb-4">
+                                Dúvidas<br /><span className="font-bold text-white">Frequentes</span>
+                            </h2>
+                            <p className="text-neutral-500">
+                                Algumas coisas que você pode querer saber antes de agendar.
+                            </p>
+                        </div>
+
+                        {/* Right: FAQ Items */}
+                        <div className="space-y-4">
+                            {[
+                                { q: "Quanto tempo leva pra cicatrizar?", a: "Em geral, 2–4 semanas para sinais iniciais. O processo completo varia conforme tamanho, local e cuidados." },
+                                { q: "Realismo desbota?", a: "Toda tattoo envelhece, mas a preservação do detalhe depende de aplicação correta, contraste bem construído e proteção solar." },
+                                { q: "Dói muito?", a: "Depende do local e da sua tolerância. Na avaliação eu te digo o que esperar." },
+                                { q: "Dá pra fazer igual à foto?", a: "O objetivo é fidelidade realista, mas a pele não é papel. Eu ajusto para ficar bonito na pele." },
+                                { q: "Vocês fazem orçamento online?", a: "Sim, envio valor aproximado com base nas informações e depois confirmo ao avaliar o projeto." },
+                                { q: "Minha pele serve? (melasma, cicatriz, etc)", a: "Serve, mas pode exigir adaptação (tamanho, contraste, menos microdetalhe)." },
+                                { q: "Quantas sessões?", a: "A quantidade de sessões depende de dois fatores, o tamanho da tatuagem, mas o principal é o limiar de dor que você pode suportar." },
+                            ].map((item, i) => (
+                                <details key={i} className="group bg-zinc-800/50 border border-zinc-700 rounded-xl overflow-hidden">
+                                    <summary className="flex items-center justify-between p-4 cursor-pointer text-white font-medium hover:bg-zinc-800 transition-colors">
+                                        {item.q}
+                                        <span className="text-neutral-500 group-open:rotate-45 transition-transform">+</span>
+                                    </summary>
+                                    <div className="px-4 pb-4 text-neutral-400 text-sm">
+                                        {item.a}
+                                    </div>
+                                </details>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* CTA Button after FAQ */}
+                    <div className="flex justify-center mt-12 pt-8 border-t border-zinc-800">
+                        <Link href="#contato">
+                            <Button size="lg" className="text-base md:text-lg px-8 md:px-10 py-6 rounded-full bg-white text-black font-bold hover:bg-neutral-200 transition-all shadow-lg animate-pulse">
+                                📩 Pedir Orçamento Agora
+                            </Button>
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* Quote Section */}
+            <section className="py-12 md:py-24 bg-zinc-950 px-4">
+                <div className="max-w-4xl mx-auto text-center">
+                    <blockquote className="text-2xl md:text-3xl font-heading font-light text-zinc-300 leading-relaxed italic">
+                        "Tinta preta é atemporal — não segue tendências nem sai de moda. <br className="hidden md:block" />
+                        É sobre <span className="text-white font-medium not-italic">ousadia, permanência</span> e criar arte que resiste ao tempo."
+                    </blockquote>
                 </div>
             </section>
 

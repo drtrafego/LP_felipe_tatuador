@@ -14,7 +14,7 @@ const images = [
 
 export function Hero() {
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-start overflow-hidden bg-background pt-4 md:pt-20 pb-12">
+        <section className="relative min-h-screen flex flex-col items-center justify-start overflow-hidden bg-background pt-4 md:pt-20 pb-6">
 
             {/* 1. Headline - Top */}
             <div className="z-20 text-center space-y-4 max-w-4xl px-4 order-1 mb-2 md:mb-10 relative flex flex-col items-center">
