@@ -17,7 +17,7 @@ export function Hero() {
         <section className="relative min-h-screen flex flex-col items-center justify-start overflow-hidden bg-background pt-4 md:pt-20 pb-12">
 
             {/* 1. Headline - Top */}
-            <div className="z-20 text-center space-y-4 max-w-4xl px-4 order-1 mb-6 md:mb-10 relative flex flex-col items-center">
+            <div className="z-20 text-center space-y-4 max-w-4xl px-4 order-1 mb-2 md:mb-10 relative flex flex-col items-center">
 
                 {/* Badge */}
                 <motion.div
@@ -58,7 +58,7 @@ export function Hero() {
           - Minimal overlap (using gap)
           - Bowtie effect maintained but cleaner
       */}
-            <div className="relative z-10 w-full max-w-[90rem] px-2 flex items-center justify-center h-[400px] md:h-[700px] order-2 perspective-[2000px] gap-1 md:gap-6">
+            <div className="relative z-10 w-full max-w-[90rem] px-2 flex items-center justify-center h-[280px] md:h-[700px] order-2 perspective-[2000px] gap-1 md:gap-6">
                 {images.map((src, index) => {
                     const isCenter = index === 2
                     const distFromCenter = Math.abs(2 - index)
@@ -115,7 +115,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 2.8 }}
-                className="order-3 mt-8 md:mt-12 z-30 flex flex-col items-center gap-6"
+                className="order-3 mt-4 md:mt-12 z-30 flex flex-col items-center gap-6"
             >
                 <Link href="#contato">
                     <Button size="lg" className="text-base md:text-lg px-8 md:px-12 py-6 md:py-8 rounded-full bg-green-600 hover:bg-green-500 text-white font-bold transition-all hover:scale-105 shadow-[0_0_30px_-5px_var(--green-500)] animate-pulse">
@@ -124,7 +124,7 @@ export function Hero() {
                 </Link>
 
                 {/* Seals */}
-                <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs md:text-sm text-neutral-400 font-light max-w-lg text-center">
+                <div className="flex flex-col md:flex-row items-center justify-center gap-y-1 md:gap-x-6 text-xs md:text-sm text-neutral-400 font-light max-w-lg text-center">
                     <span className="flex items-center gap-1.5">
                         <span className="text-yellow-500">⭐</span> Provas Sociais Reais
                     </span>
