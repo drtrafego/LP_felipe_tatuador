@@ -261,65 +261,7 @@ export default function Teste2Page() {
                 </div>
             </section>
 
-            {/* Testimonials Section */}
-            <section className="py-12 md:py-24 bg-zinc-900 px-4">
-                <div className="max-w-7xl mx-auto">
 
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
-                            Realismo bom não gera "alívio". <br /> <span className="text-primary">Gera orgulho.</span>
-                        </h2>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {[
-                            {
-                                name: "Arthur",
-                                text: "'Mano, bom dia! Passando para agradecer pelo trampo. O resultado ficou incrível e a qualidade superou o que eu esperava. Estou muito animado para os próximos episódios e para fecharmos mais projetos juntos. Parabéns pelo trabalho excepcional!'",
-                                role: "Realismo"
-                            },
-                            {
-                                name: "Daniel",
-                                text: "'Thanks a lot, it was really wonderful. The session was great and you made the whole process very easy. I really appreciate your professional approach and the high quality of your work. I'm super happy with it! 👍🏻'",
-                                role: "Realismo Preto e Cinza"
-                            },
-                            {
-                                name: "Eduardo",
-                                text: "'Valeuu meu bom! Gratidão! Fiquei muito feliz com o resultado, as tattoos ficaram animais e o atendimento sempre nota mil. Já estou pensando nas próximas!'",
-                                role: "Microrealismo"
-                            },
-                            {
-                                name: "Caio",
-                                text: "'O trampo fala por si só, ficou bom demais! Teve gente perguntando se era real de tão bem feito que ficou. Postei no Instagram e só recebi elogios dos parceiros. Ficou surreal, mano. Trabalho muito bem feito mesmo, nível diferenciado.'",
-                                role: "Fechamento de Braço"
-                            }
-                        ].map((t, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className="bg-zinc-800/50 p-8 rounded-2xl border border-zinc-700"
-                            >
-                                <div className="flex gap-1 text-yellow-500 mb-4">
-                                    {[...Array(5)].map((_, j) => (
-                                        <span key={j}>★</span>
-                                    ))}
-                                </div>
-                                <p className="text-lg text-neutral-300 italic mb-6">
-                                    {t.text}
-                                </p>
-                                <div>
-                                    <h4 className="text-white font-bold">{t.name}</h4>
-                                    <span className="text-xs text-neutral-500 uppercase tracking-wider">{t.role}</span>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                </div>
-            </section>
 
             {/* On The Board - Polaroid Gallery */}
             <section className="py-12 md:py-24 bg-zinc-950 px-4 relative overflow-hidden">
@@ -586,6 +528,66 @@ export default function Teste2Page() {
                 </div>
             </section>
 
+            {/* Testimonials Section */}
+            <section className="py-12 md:py-24 bg-zinc-900 px-4">
+                <div className="max-w-7xl mx-auto">
+
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
+                            Realismo bom não gera "alívio". <br /> <span className="text-primary">Gera orgulho.</span>
+                        </h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {[
+                            {
+                                name: "Arthur",
+                                text: "'Mano, bom dia! Passando para agradecer pelo trampo. O resultado ficou incrível e a qualidade superou o que eu esperava. Estou muito animado para os próximos episódios e para fecharmos mais projetos juntos. Parabéns pelo trabalho excepcional!'",
+                                role: "Realismo"
+                            },
+                            {
+                                name: "Daniel",
+                                text: "'Thanks a lot, it was really wonderful. The session was great and you made the whole process very easy. I really appreciate your professional approach and the high quality of your work. I'm super happy with it! 👍🏻'",
+                                role: "Realismo Preto e Cinza"
+                            },
+                            {
+                                name: "Eduardo",
+                                text: "'Valeuu meu bom! Gratidão! Fiquei muito feliz com o resultado, as tattoos ficaram animais e o atendimento sempre nota mil. Já estou pensando nas próximas!'",
+                                role: "Microrealismo"
+                            },
+                            {
+                                name: "Caio",
+                                text: "'O trampo fala por si só, ficou bom demais! Teve gente perguntando se era real de tão bem feito que ficou. Postei no Instagram e só recebi elogios dos parceiros. Ficou surreal, mano. Trabalho muito bem feito mesmo, nível diferenciado.'",
+                                role: "Fechamento de Braço"
+                            }
+                        ].map((t, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                className="bg-zinc-800/50 p-8 rounded-2xl border border-zinc-700"
+                            >
+                                <div className="flex gap-1 text-yellow-500 mb-4">
+                                    {[...Array(5)].map((_, j) => (
+                                        <span key={j}>★</span>
+                                    ))}
+                                </div>
+                                <p className="text-lg text-neutral-300 italic mb-6">
+                                    {t.text}
+                                </p>
+                                <div>
+                                    <h4 className="text-white font-bold">{t.name}</h4>
+                                    <span className="text-xs text-neutral-500 uppercase tracking-wider">{t.role}</span>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                </div>
+            </section>
+
             {/* FAQ Section */}
             <section className="py-12 md:py-24 bg-zinc-900 px-4">
                 <div className="max-w-5xl mx-auto">
@@ -608,8 +610,9 @@ export default function Teste2Page() {
                                 { q: "Realismo desbota?", a: "Toda tattoo envelhece, mas a preservação do detalhe depende de aplicação correta, contraste bem construído e proteção solar." },
                                 { q: "Dói muito?", a: "Depende do local e da sua tolerância. Na avaliação eu te digo o que esperar." },
                                 { q: "Dá pra fazer igual à foto?", a: "O objetivo é fidelidade realista, mas a pele não é papel. Eu ajusto para ficar bonito na pele." },
-                                { q: "Orçamento online?", a: "Sim, envio valor aproximado e confirmo ao avaliar o projeto." },
-                                { q: "Quantas sessões?", a: "Depende do tamanho e do seu limiar de dor." },
+                                { q: "Vocês fazem orçamento online?", a: "Sim, envio valor aproximado com base nas informações e depois confirmo ao avaliar o projeto." },
+                                { q: "Minha pele serve? (melasma, cicatriz, etc)", a: "Serve, mas pode exigir adaptação (tamanho, contraste, menos microdetalhe)." },
+                                { q: "Quantas sessões?", a: "A quantidade de sessões depende de dois fatores, o tamanho da tatuagem, mas o principal é o limiar de dor que você pode suportar." },
                             ].map((item, i) => (
                                 <details key={i} className="group bg-zinc-800/50 border border-zinc-700 rounded-xl overflow-hidden">
                                     <summary className="flex items-center justify-between p-4 cursor-pointer text-white font-medium hover:bg-zinc-800 transition-colors">
@@ -644,15 +647,20 @@ export default function Teste2Page() {
                         {/* Left: Title & Info */}
                         <div className="space-y-8">
                             <div>
-                                <h2 className="text-4xl md:text-5xl font-heading font-light text-zinc-300 mb-4">
-                                    Vamos Criar<br /><span className="font-bold text-white">Algo Permanente.</span>
+                                <h2 className="text-4xl md:text-5xl font-heading font-light text-zinc-300 mb-6">
+                                    Vamos transformar sua referência em <span className="font-bold text-white">arte realista.</span>
                                 </h2>
-                                <p className="text-neutral-500 max-w-md">
-                                    Tatuagens personalizadas disponíveis apenas por agendamento. Compartilhe sua ideia e eu crio um design feito para durar.
-                                </p>
+                                <div className="space-y-4 text-neutral-500">
+                                    <p><strong className="text-white">O que acontece quando você chama no WhatsApp:</strong></p>
+                                    <ul className="list-disc list-inside space-y-2 ml-2">
+                                        <li>Você manda referência + local + tamanho</li>
+                                        <li>Eu te respondo com orientação + valor aproximado + prazo</li>
+                                        <li>Se fizer sentido, agendamos consulta/sessão e fechamos detalhes</li>
+                                    </ul>
+                                </div>
                             </div>
 
-                            <div className="space-y-4 text-sm">
+                            <div className="space-y-4 text-sm pt-4">
                                 <div className="flex items-center gap-3 text-neutral-400">
                                     <span className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-white">📧</span>
                                     <span>contato@felipetattoo.com</span>
