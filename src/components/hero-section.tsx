@@ -14,7 +14,7 @@ const images = [
 
 export function Hero() {
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-background py-8 md:py-0">
+        <section className="relative min-h-screen flex flex-col items-center justify-start overflow-hidden bg-background pt-4 md:pt-20 pb-12">
 
             {/* 1. Headline - Top */}
             <div className="z-20 text-center space-y-4 max-w-4xl px-4 order-1 mb-6 md:mb-10 relative flex flex-col items-center">
@@ -58,7 +58,7 @@ export function Hero() {
           - Minimal overlap (using gap)
           - Bowtie effect maintained but cleaner
       */}
-            <div className="relative z-10 w-full max-w-[90rem] px-2 flex items-center justify-center h-[300px] md:h-[550px] order-2 perspective-[2500px] gap-2 md:gap-4">
+            <div className="relative z-10 w-full max-w-[90rem] px-2 flex items-center justify-center h-[400px] md:h-[700px] order-2 perspective-[2500px] gap-3 md:gap-6">
                 {images.map((src, index) => {
                     const isCenter = index === 2
                     const distFromCenter = Math.abs(2 - index)
@@ -95,8 +95,8 @@ export function Hero() {
                             }}
                             className={`relative rounded-xl md:rounded-2xl overflow-hidden border border-white/10 shadow-2xl shrink-0
                         ${isCenter
-                                    ? "z-30 w-20 md:w-64 aspect-[3/4] shadow-[0_0_60px_rgba(255,255,255,0.15)] brightness-125 saturate-110"
-                                    : "z-20 w-20 md:w-64 aspect-[3/4] grayscale-[80%] brightness-75 hover:grayscale-0 transition-all duration-500"
+                                    ? "z-30 w-32 md:w-96 aspect-[3/4] shadow-[0_0_60px_rgba(255,255,255,0.15)] brightness-125 saturate-110"
+                                    : "z-20 w-32 md:w-96 aspect-[3/4] grayscale-[80%] brightness-75 hover:grayscale-0 transition-all duration-500"
                                 }
                     `}
                             style={{
