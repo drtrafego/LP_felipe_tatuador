@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 
 export function SectionPhilosophy() {
     return (
-        <section className="py-12 md:py-24 bg-white px-4 md:px-8 overflow-hidden">
+        <section className="pt-2 pb-12 md:pt-12 md:pb-24 bg-white px-4 md:px-8 overflow-hidden">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
                 {/* Left: Headline/Impact */}
