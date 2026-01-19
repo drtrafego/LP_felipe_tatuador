@@ -6,6 +6,7 @@ import { z } from "zod"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import 'react-phone-number-input/style.css'
+// @ts-ignore
 import PhoneInput from 'react-phone-number-input'
 
 import { Button } from "@/components/ui/button"
@@ -91,7 +92,7 @@ export function ContactForm() {
                                 </FormItem>
                             )}
                         />
-                        
+
                         <FormField
                             control={form.control}
                             name="phone"

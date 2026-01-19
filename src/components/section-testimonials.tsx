@@ -5,19 +5,19 @@ import { Star } from "lucide-react"
 
 const testimonials = [
     {
-        name: "Ricardo M.",
-        text: "“Não ficou parecido, ficou idêntico. A técnica de camadas fez toda a diferença na cicatrização.”",
+        name: "Arthur",
+        text: "\"Mano, bom dia! Passando para agradecer pelo trampo. O resultado ficou incrível e a qualidade superou o que eu esperava. Estou muito animado para os próximos episódios e para fecharmos mais projetos juntos. Parabéns pelo trabalho excepcional!\"",
+        role: "Realismo"
+    },
+    {
+        name: "Daniel",
+        text: "\"Thanks a lot, it was really wonderful. The session was great and you made the whole process very easy. I really appreciate your professional approach and the high quality of your work. I'm super happy with it! 👍🏻\"",
         role: "Realismo Preto e Cinza"
     },
     {
-        name: "Fernanda S.",
-        text: "“Eu tinha medo de virar uma mancha com o tempo. Já faz 2 anos e os detalhes continuam nítidos.”",
+        name: "Eduardo",
+        text: "\"Valeuu meu bom! Gratidão! Fiquei muito feliz com o resultado, as tattoos ficaram animais e o atendimento sempre nota mil. Já estou pensando nas próximas!\"",
         role: "Microrealismo"
-    },
-    {
-        name: "André L.",
-        text: "“O atendimento é outro nível. A avaliação da pele antes de tudo me passou muita segurança.”",
-        role: "Fechamento de Braço"
     }
 ]
 
