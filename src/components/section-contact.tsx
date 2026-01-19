@@ -109,6 +109,14 @@ export function SectionContact() {
 
             </div>
 
+            {/* Quote Section (Restored from Teste2) */}
+            <div className="py-24 max-w-4xl mx-auto text-center">
+                <blockquote className="text-2xl md:text-3xl font-heading font-light text-zinc-900 leading-relaxed italic">
+                    "Tinta preta é atemporal — não segue tendências nem sai de moda. <br className="hidden md:block" />
+                    É sobre <span className="text-black font-medium not-italic">ousadia, permanência</span> e criar arte que resiste ao tempo."
+                </blockquote>
+            </div>
+
             {/* Footer Simple */}
             <footer className="mt-24 border-t border-zinc-200 pt-8 text-center text-neutral-500 text-sm">
                 <p>© {new Date().getFullYear()} Felipe Tatuador. Todos os direitos reservados.</p>
