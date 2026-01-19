@@ -10,7 +10,7 @@ export default function Teste2Page() {
         <main className="min-h-screen bg-black text-white selection:bg-primary selection:text-black font-sans">
 
             {/* Hero Section with Background Image */}
-            <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-black">
+            <section className="relative h-auto py-24 md:py-32 flex flex-col justify-center items-center overflow-hidden bg-black">
 
                 {/* Background Image Container */}
                 <div className="absolute inset-0 z-0">
@@ -24,7 +24,7 @@ export default function Teste2Page() {
                 </div>
 
                 {/* Content Container */}
-                <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center space-y-6 md:space-y-8 pt-20 md:pt-0">
+                <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center space-y-6 md:space-y-8">
 
                     {/* Badge */}
                     <motion.div
@@ -97,7 +97,7 @@ export default function Teste2Page() {
             </section>
 
             {/* Meet The Artist Section */}
-            <section className="py-12 md:py-24 bg-zinc-950 px-4 md:px-8">
+            <section className="pb-12 pt-4 md:pb-24 md:pt-8 bg-zinc-950 px-4 md:px-8">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                     {/* Left: Artist Image */}
@@ -110,7 +110,7 @@ export default function Teste2Page() {
                             />
                             {/* Name Overlay */}
                             <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent">
-                                <h3 className="text-4xl md:text-5xl font-heading font-bold text-white tracking-wide">Felipe</h3>
+                                <h3 className="text-4xl md:text-5xl font-heading font-bold text-white tracking-wide">Felipe Matias</h3>
                             </div>
                         </div>
                     </div>
