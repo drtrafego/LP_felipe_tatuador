@@ -85,7 +85,7 @@ export function ContactForm() {
                                         <Input
                                             placeholder="Ex: Felipe Silva"
                                             {...field}
-                                            className="bg-white border-zinc-300 focus:border-amber-500 text-zinc-900 placeholder:text-zinc-400 h-12 text-base"
+                                            className="!bg-white !border-zinc-300 focus:!border-amber-500 !text-zinc-900 !placeholder-zinc-400 h-12 text-base md:text-sm"
                                         />
                                     </FormControl>
                                     <FormMessage />
@@ -106,7 +106,7 @@ export function ContactForm() {
                                                 value={field.value}
                                                 onChange={field.onChange}
                                                 defaultCountry="BR"
-                                                className="flex h-12 w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-zinc-400 focus-within:border-amber-500 focus-within:ring-1 focus-within:ring-amber-500 disabled:cursor-not-allowed disabled:opacity-50 text-zinc-900 items-center gap-2"
+                                                className="flex h-12 w-full rounded-md border !border-zinc-300 !bg-white px-3 py-2 text-base md:text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium !placeholder-zinc-400 focus-within:!border-amber-500 focus-within:!ring-1 focus-within:!ring-amber-500 disabled:cursor-not-allowed disabled:opacity-50 !text-zinc-900 items-center gap-2"
                                             />
                                         </div>
                                     </FormControl>
