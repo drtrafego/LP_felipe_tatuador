@@ -15,7 +15,7 @@ const techSteps = [
 
 export function SectionTechnical() {
     return (
-        <section className="py-12 md:py-24 bg-zinc-50 px-4 border-y border-zinc-200">
+        <section className="py-8 md:py-16 bg-zinc-50 px-4 border-y border-zinc-200">
             <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                 {/* Left: Content */}
@@ -66,17 +66,13 @@ export function SectionTechnical() {
 
                 {/* Right: Technical Image/Visual */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     className="relative aspect-square rounded-2xl overflow-hidden bg-white border border-zinc-200 shadow-xl"
                 >
-                    {/* Abstract/Technical representation */}
-                    <div className="absolute inset-0 flex items-center justify-center text-neutral-400 font-mono text-sm p-8 text-center bg-[url('/grid-pattern.png')] bg-repeat opacity-20">
-                        [ESPAÇO PARA IMAGEM TÉCNICA: MAPA DE VALORES / STENCIL]
-                    </div>
-                    {/* Actual Image if available */}
-                    <img src="/IMG_5868_jpg.jpg" alt="Processo Técnico" className="object-cover w-full h-full opacity-80 hover:opacity-100 transition-opacity duration-500" />
+                    {/* Actual Image - No placeholder text behind, full opacity */}
+                    <img src="/IMG_5868_jpg.jpg" alt="Processo Técnico" className="object-cover w-full h-full" />
                 </motion.div>
 
             </div>
