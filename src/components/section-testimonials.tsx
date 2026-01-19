@@ -18,6 +18,11 @@ const testimonials = [
         name: "Eduardo",
         text: "\"Valeuu meu bom! Gratidão! Fiquei muito feliz com o resultado, as tattoos ficaram animais e o atendimento sempre nota mil. Já estou pensando nas próximas!\"",
         role: "Microrealismo"
+    },
+    {
+        name: "Caio",
+        text: "\"O trampo fala por si só, ficou bom demais! Teve gente perguntando se era real de tão bem feito que ficou. Postei no Instagram e só recebi elogios dos parceiros. Ficou surreal, mano. Trabalho muito bem feito mesmo, nível diferenciado.\"",
+        role: "Fechamento de Braço"
     }
 ]
 
@@ -32,7 +37,7 @@ export function SectionTestimonials() {
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {testimonials.map((t, i) => (
                         <motion.div
                             key={i}
