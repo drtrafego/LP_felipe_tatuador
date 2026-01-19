@@ -286,7 +286,7 @@ export default function Teste2Page() {
                         {/* Polaroid 1 */}
                         <div className="relative transform -rotate-3 hover:rotate-0 transition-transform duration-300">
                             <div className="bg-white p-2 pb-10 rounded-sm shadow-2xl">
-                                <img src="/tatoohero1.jpg" alt="Tattoo 1" className="w-full aspect-[3/4] object-cover grayscale" />
+                                <img src="/tatoohero1.jpg" alt="Tattoo 1" className="w-full aspect-[3/4] object-cover" />
                             </div>
                             {/* Tape - thicker, more visible */}
                             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-8 bg-gradient-to-b from-stone-200 to-stone-300/80 rounded-[2px] rotate-3 shadow-md" style={{ clipPath: 'polygon(5% 0%, 95% 5%, 100% 100%, 0% 95%)' }} />
@@ -295,7 +295,7 @@ export default function Teste2Page() {
                         {/* Polaroid 2 */}
                         <div className="relative transform rotate-2 hover:rotate-0 transition-transform duration-300 mt-8">
                             <div className="bg-white p-2 pb-10 rounded-sm shadow-2xl">
-                                <img src="/tatoohero2.jpg" alt="Tattoo 2" className="w-full aspect-[3/4] object-cover grayscale" />
+                                <img src="/tatoohero2.jpg" alt="Tattoo 2" className="w-full aspect-[3/4] object-cover" />
                             </div>
                             <div className="absolute top-0 right-4 -translate-y-1/2 w-16 h-7 bg-gradient-to-b from-stone-200 to-stone-300/80 rounded-[2px] -rotate-6 shadow-md" style={{ clipPath: 'polygon(0% 10%, 100% 0%, 95% 100%, 5% 90%)' }} />
                             {/* Sticky Note */}
@@ -307,7 +307,7 @@ export default function Teste2Page() {
                         {/* Polaroid 3 */}
                         <div className="relative transform -rotate-1 hover:rotate-0 transition-transform duration-300">
                             <div className="bg-white p-2 pb-10 rounded-sm shadow-2xl">
-                                <img src="/tatoohero3.jpg" alt="Tattoo 3" className="w-full aspect-[3/4] object-cover grayscale" />
+                                <img src="/tatoohero3.jpg" alt="Tattoo 3" className="w-full aspect-[3/4] object-cover" />
                             </div>
                             <div className="absolute top-0 left-4 -translate-y-1/2 w-18 h-7 bg-gradient-to-b from-stone-200 to-stone-300/80 rounded-[2px] rotate-2 shadow-md" style={{ clipPath: 'polygon(3% 5%, 97% 0%, 100% 95%, 0% 100%)' }} />
                         </div>
@@ -315,7 +315,7 @@ export default function Teste2Page() {
                         {/* Polaroid 4 */}
                         <div className="relative transform rotate-3 hover:rotate-0 transition-transform duration-300 -mt-4">
                             <div className="bg-white p-2 pb-10 rounded-sm shadow-2xl">
-                                <img src="/APC_0221.jpg" alt="Tattoo 4" className="w-full aspect-[3/4] object-cover grayscale" />
+                                <img src="/APC_0221.jpg" alt="Tattoo 4" className="w-full aspect-[3/4] object-cover" />
                             </div>
                             <div className="absolute bottom-8 right-0 translate-x-1/4 w-20 h-8 bg-gradient-to-b from-stone-200 to-stone-300/80 rounded-[2px] -rotate-45 shadow-md" style={{ clipPath: 'polygon(0% 0%, 100% 10%, 95% 100%, 5% 90%)' }} />
                         </div>
@@ -323,7 +323,7 @@ export default function Teste2Page() {
                         {/* Polaroid 5 */}
                         <div className="relative transform -rotate-2 hover:rotate-0 transition-transform duration-300 mt-6">
                             <div className="bg-white p-2 pb-10 rounded-sm shadow-2xl">
-                                <img src="/APC_0531.jpg" alt="Tattoo 5" className="w-full aspect-[3/4] object-cover grayscale" />
+                                <img src="/APC_0531.jpg" alt="Tattoo 5" className="w-full aspect-[3/4] object-cover" />
                             </div>
                             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-18 h-7 bg-gradient-to-b from-stone-200 to-stone-300/80 rounded-[2px] rotate-1 shadow-md" style={{ clipPath: 'polygon(5% 0%, 95% 5%, 100% 100%, 0% 95%)' }} />
                             <div className="absolute -top-6 left-0 md:left-2 bg-yellow-300 text-black text-[9px] md:text-[10px] font-bold px-2 py-1 -rotate-6 shadow-md">
@@ -334,7 +334,7 @@ export default function Teste2Page() {
                         {/* Polaroid 6 */}
                         <div className="relative transform rotate-1 hover:rotate-0 transition-transform duration-300">
                             <div className="bg-white p-2 pb-10 rounded-sm shadow-2xl">
-                                <img src="/IMG_5694_jpg.jpg" alt="Tattoo 6" className="w-full aspect-[3/4] object-cover grayscale" />
+                                <img src="/IMG_5694_jpg.jpg" alt="Tattoo 6" className="w-full aspect-[3/4] object-cover" />
                             </div>
                             <div className="absolute bottom-8 left-0 -translate-x-1/4 w-20 h-8 bg-gradient-to-b from-stone-200 to-stone-300/80 rounded-[2px] rotate-45 shadow-md" style={{ clipPath: 'polygon(5% 10%, 95% 0%, 100% 90%, 0% 100%)' }} />
                             <div className="absolute -bottom-4 -right-1 md:-right-2 bg-yellow-300 text-black text-[9px] md:text-[10px] font-bold px-2 py-1 rotate-6 shadow-md">
@@ -345,7 +345,7 @@ export default function Teste2Page() {
                         {/* Polaroid 7 */}
                         <div className="relative transform -rotate-4 hover:rotate-0 transition-transform duration-300 mt-4">
                             <div className="bg-white p-2 pb-10 rounded-sm shadow-2xl">
-                                <img src="/tatoohero4.jpg" alt="Tattoo 7" className="w-full aspect-[3/4] object-cover grayscale" />
+                                <img src="/tatoohero4.jpg" alt="Tattoo 7" className="w-full aspect-[3/4] object-cover" />
                             </div>
                             <div className="absolute top-0 right-6 -translate-y-1/2 w-16 h-7 bg-gradient-to-b from-stone-200 to-stone-300/80 rounded-[2px] rotate-3 shadow-md" style={{ clipPath: 'polygon(0% 5%, 100% 0%, 95% 95%, 5% 100%)' }} />
                         </div>
@@ -353,7 +353,7 @@ export default function Teste2Page() {
                         {/* Polaroid 8 */}
                         <div className="relative transform rotate-2 hover:rotate-0 transition-transform duration-300 -mt-2">
                             <div className="bg-white p-2 pb-10 rounded-sm shadow-2xl">
-                                <img src="/tatoohero5.JPG" alt="Tattoo 8" className="w-full aspect-[3/4] object-cover grayscale" />
+                                <img src="/tatoohero5.JPG" alt="Tattoo 8" className="w-full aspect-[3/4] object-cover" />
                             </div>
                             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 translate-y-1/2 w-20 h-8 bg-gradient-to-b from-stone-200 to-stone-300/80 rounded-[2px] -rotate-2 shadow-md" style={{ clipPath: 'polygon(5% 0%, 95% 5%, 100% 100%, 0% 95%)' }} />
                             <div className="absolute -top-4 -left-1 md:-left-2 bg-yellow-300 text-black text-[9px] md:text-[10px] font-bold px-2 py-1 -rotate-12 shadow-md">
@@ -364,7 +364,7 @@ export default function Teste2Page() {
                         {/* Polaroid 9 */}
                         <div className="relative transform -rotate-1 hover:rotate-0 transition-transform duration-300 mt-8">
                             <div className="bg-white p-2 pb-10 rounded-sm shadow-2xl">
-                                <img src="/IMG_7776.jpg" alt="Tattoo 9" className="w-full aspect-[3/4] object-cover grayscale" />
+                                <img src="/IMG_7776.jpg" alt="Tattoo 9" className="w-full aspect-[3/4] object-cover" />
                             </div>
                             <div className="absolute top-0 left-4 -translate-y-1/2 w-18 h-7 bg-gradient-to-b from-stone-200 to-stone-300/80 rounded-[2px] rotate-6 shadow-md" style={{ clipPath: 'polygon(3% 0%, 97% 10%, 100% 100%, 0% 90%)' }} />
                             <div className="absolute -bottom-2 -right-1 md:-right-3 bg-yellow-300 text-black text-[9px] md:text-[10px] font-bold px-2 py-1 rotate-8 shadow-md">
