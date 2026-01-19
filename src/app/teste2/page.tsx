@@ -256,7 +256,7 @@ export default function Teste2Page() {
                         viewport={{ once: true }}
                         className="relative aspect-square rounded-2xl overflow-hidden border border-zinc-800 shadow-xl"
                     >
-                        <img src="/tatoohero6.jpg" alt="Processo Técnico" className="object-cover w-full h-full" />
+                        <img src="/IMG_6194.jpg" alt="Processo Técnico" className="object-cover w-full h-full" />
                     </motion.div>
 
                 </div>
