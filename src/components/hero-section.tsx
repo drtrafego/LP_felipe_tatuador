@@ -58,7 +58,7 @@ export function Hero() {
           - Minimal overlap (using gap)
           - Bowtie effect maintained but cleaner
       */}
-            <div className="relative z-10 w-full max-w-[90rem] px-2 flex items-center justify-center h-[400px] md:h-[700px] order-2 perspective-[2500px] gap-3 md:gap-6">
+            <div className="relative z-10 w-full max-w-[90rem] px-2 flex items-center justify-center h-[400px] md:h-[700px] order-2 perspective-[2000px] gap-1 md:gap-6">
                 {images.map((src, index) => {
                     const isCenter = index === 2
                     const distFromCenter = Math.abs(2 - index)
@@ -66,12 +66,11 @@ export function Hero() {
                     const delay = (2 - distFromCenter) * 0.4 + 0.5
 
                     // Height/Scale Logic
-                    // Center (Artist) is now BIGGER (1.45) for emphasis
-                    // Sides drop off faster to highlight center more
-                    const scaleFactor = isCenter ? 1.45 : 1.3 - (distFromCenter * 0.15)
+                    // Reduced center scale dominance to allow sides to appear more
+                    const scaleFactor = isCenter ? 1.35 : 1.25 - (distFromCenter * 0.1)
 
                     const offset = index - 2
-                    const rotateY = offset * -15 // Softer 15deg
+                    const rotateY = offset * -10 // Reduced rotation for better visibility
 
                     return (
                         <motion.div
@@ -95,8 +94,8 @@ export function Hero() {
                             }}
                             className={`relative rounded-xl md:rounded-2xl overflow-hidden border border-white/10 shadow-2xl shrink-0
                         ${isCenter
-                                    ? "z-30 w-32 md:w-96 aspect-[3/4] shadow-[0_0_60px_rgba(255,255,255,0.15)] brightness-125 saturate-110"
-                                    : "z-20 w-14 md:w-96 aspect-[3/4] grayscale-[80%] brightness-75 hover:grayscale-0 transition-all duration-500"
+                                    ? "z-30 w-36 md:w-96 aspect-[3/4] shadow-[0_0_60px_rgba(255,255,255,0.15)] brightness-110 saturate-110"
+                                    : "z-20 w-16 md:w-64 aspect-[2/3] grayscale-[30%] brightness-90 hover:grayscale-0 transition-all duration-500" // Narrower (w-16) but taller aspect for 'finer' look
                                 }
                     `}
                             style={{
