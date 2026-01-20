@@ -57,6 +57,33 @@ EMAIL_TO="felipe@felptattoo.com"
 
 ### 3. Configurar o Banco de Dados (Neon)
 Rode este script SQL no **SQL Editor** do Neon para criar a tabela pronta para múltiplos clientes:
+...
+```
+
+### 4. Exemplos de SMTP (E-mail)
+Aqui estão configurações comuns para preencher no `.env.local`:
+
+**Opção A: Gmail (Requer "Senha de App")**
+- Host: `smtp.gmail.com`
+- Port: `465`
+- User: `seu@gmail.com`
+- Pass: *Não é a senha do login!* Crie uma em: Conta Google > Segurança > Verificação em 2 etapas > Senhas de app.
+
+**Opção B: Hostinger (Titan Email)**
+- Host: `smtp.hostinger.com` (ou `smtp.titan.email`)
+- Port: `465` (SSL) ou `587` (TLS)
+- User: `seu@dominio.com`
+- Pass: `Sua senha de login do email`
+
+**Opção C: Zoho Mail**
+- Host: `smtp.zoho.com`
+- Port: `465`
+- User: `seu@dominio.com`
+- Pass: `Sua senha`
+
+---
+
+## 🔄 Fluxo de Dados (Integrações)
 
 ```sql
 -- Cria a tabela Leads se não existir
@@ -148,8 +175,8 @@ O código já possui estilos inline para garantir que abra bem no Gmail/Outlook.
    "name": "Nome do Lead",
    "email": "", // Campo vazio (removido do formulário)
    "whatsapp": "5511999999999",
-   "company": "Nome do Estúdio ou Tatuador", // Vem de NEXT_PUBLIC_TENANT_NAME
-   "notes": "Interesse em Tatuagem Realista (Lead Site)",
+   "company": "", // Em branco
+   "notes": "",   // Em branco
    "campaignSource": "Site Orgânico / Landing Page",
    "message": "Solicitação de orçamento via formulário."
  }

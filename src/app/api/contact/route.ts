@@ -51,8 +51,8 @@ export async function POST(req: Request) {
                     name,
                     email: "",
                     whatsapp: formattedPhone,
-                    company: process.env.NEXT_PUBLIC_TENANT_NAME || "Empresa LTDA",
-                    notes: "Interesse em Tatuagem Realista (Lead Site)",
+                    company: "", // Em branco conforme solicitado
+                    notes: "",   // Em branco conforme solicitado
                     campaignSource: "Site Orgânico / Landing Page",
                     message: "Solicitação de orçamento via formulário."
                 };
