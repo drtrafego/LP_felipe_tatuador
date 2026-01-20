@@ -5,7 +5,7 @@ import nodemailer from 'nodemailer';
 export async function POST(req: Request) {
     try {
         const body = await req.json();
-        const { name, phone, email } = body;
+        const { name, phone } = body;
 
         // Basic Validation
         if (!name || !phone) {
@@ -49,7 +49,7 @@ export async function POST(req: Request) {
                 // User-defined strict payload format
                 const crmPayload = {
                     name,
-                    email: email || "",
+                    email: "",
                     whatsapp: formattedPhone,
                     company: process.env.NEXT_PUBLIC_TENANT_NAME || "Empresa LTDA",
                     notes: "Interesse em Tatuagem Realista (Lead Site)",
@@ -86,12 +86,11 @@ export async function POST(req: Request) {
                     from: process.env.EMAIL_USER,
                     to: process.env.EMAIL_TO || process.env.EMAIL_USER,
                     subject: `Novo Lead: ${name}`,
-                    text: `Novo cadastro no site!\n\nNome: ${name}\nEmail: ${email}\nTelefone: ${formattedPhone}`,
+                    text: `Novo cadastro no site!\n\nNome: ${name}\nTelefone: ${formattedPhone}`,
                     html: `
                     <div style="font-family: sans-serif; color: #333; max-width: 600px;">
                         <h2>🚀 Novo Lead Capturado</h2>
                         <p><strong>Nome:</strong> ${name}</p>
-                        <p><strong>E-mail:</strong> ${email || 'Não informado'}</p>
                         <p><strong>Telefone:</strong> <a href="https://wa.me/${formattedPhone}" style="color: #2563eb; text-decoration: none;">${formattedPhone} (WhatsApp)</a></p>
                         <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
                         <p style="font-size: 14px; color: #666;">

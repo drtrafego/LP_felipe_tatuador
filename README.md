@@ -111,9 +111,9 @@ Quando um lead se cadastra, o sistema envia um e-mail para o endereço definido 
 
 **Variáveis Disponíveis para uso no Template:**
 - `${name}`: Nome do cliente.
-- `${email}`: E-mail do cliente.
 - `${formattedPhone}`: Telefone (somente números, ex: 5512999999999).
 - `${process.env.NEXT_PUBLIC_TENANT_NAME}`: Nome do estúdio.
+*Nota: O campo e-mail foi removido do formulário por opção.*
 
 **Template Atual (HTML):**
 O código já possui estilos inline para garantir que abra bem no Gmail/Outlook.
@@ -122,7 +122,6 @@ O código já possui estilos inline para garantir que abra bem no Gmail/Outlook.
 <div style="font-family: sans-serif; color: #333; max-width: 600px;">
     <h2>🚀 Novo Lead Capturado</h2>
     <p><strong>Nome:</strong> ${name}</p>
-    <p><strong>E-mail:</strong> ${email || 'Não informado'}</p>
     <p><strong>Telefone:</strong> <a href="https://wa.me/${formattedPhone}" style="color: #2563eb;">${formattedPhone} (WhatsApp)</a></p>
     <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
     <p style="font-size: 14px; color: #666;">
@@ -132,29 +131,29 @@ O código já possui estilos inline para garantir que abra bem no Gmail/Outlook.
 </div>
 ```
 
-> **Dica:** Para adicionar mais campos (ex: "Ideia da Tatuagem"), você precisa:
+> **Dica:** Para adicionar mais campos (ex: "E-mail" ou "Ideia da Tatuagem"), você precisa:
 > 1. Adicionar o campo no `contact-form.tsx`.
 > 2. Adicionar no `POST` do `route.ts`.
-> 3. Inserir a variável `${ideia}` neste HTML acima.
-
----
-
-## 🔄 Fluxo de Dados (Integrações)
-
-### 1. Webhook CRM (JSON Payload)
-Quando um lead se cadastra, o sistema envia este JSON para o `CRM_WEBHOOK_URL`:
-
-```json
-{
-  "name": "Nome do Lead",
-  "email": "lead@email.com",
-  "whatsapp": "5511999999999",
-  "company": "Nome do Estúdio ou Tatuador", // Vem de NEXT_PUBLIC_TENANT_NAME
-  "notes": "Interesse em Tatuagem Realista (Lead Site)",
-  "campaignSource": "Site Orgânico / Landing Page",
-  "message": "Solicitação de orçamento via formulário."
-}
-```
+> 3. Inserir a variável `${variavel}` neste HTML acima.
+ 
+ ---
+ 
+ ## 🔄 Fluxo de Dados (Integrações)
+ 
+ ### 1. Webhook CRM (JSON Payload)
+ Quando um lead se cadastra, o sistema envia este JSON para o `CRM_WEBHOOK_URL`:
+ 
+ ```json
+ {
+   "name": "Nome do Lead",
+   "email": "", // Campo vazio (removido do formulário)
+   "whatsapp": "5511999999999",
+   "company": "Nome do Estúdio ou Tatuador", // Vem de NEXT_PUBLIC_TENANT_NAME
+   "notes": "Interesse em Tatuagem Realista (Lead Site)",
+   "campaignSource": "Site Orgânico / Landing Page",
+   "message": "Solicitação de orçamento via formulário."
+ }
+ ```
 
 ### 2. Redirecionamento WhatsApp
 Após o cadastro, o usuário vai para `/obrigado`, aguarda 3 segundos e é redirecionado para:
