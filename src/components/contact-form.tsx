@@ -29,6 +29,7 @@ const formSchema = z.object({
     name: z.string().min(2, {
         message: "Nome deve ter pelo menos 2 caracteres.",
     }),
+    email: z.string().email("E-mail inválido.").min(5, "E-mail é obrigatório."),
     phone: z.string().min(1, "Telefone é obrigatório.").min(10, "Telefone inválido."),
 })
 
@@ -40,6 +41,7 @@ export function ContactForm() {
         resolver: zodResolver(formSchema),
         defaultValues: {
             name: "",
+            email: "",
             phone: "",
         },
     })
@@ -110,6 +112,25 @@ export function ContactForm() {
                                     <FormControl>
                                         <Input
                                             placeholder="Ex: Felipe Silva"
+                                            {...field}
+                                            className="!bg-white !border-zinc-300 focus:!border-amber-500 !text-zinc-900 !placeholder-zinc-400 h-12 text-base md:text-sm"
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        <FormField
+                            control={form.control}
+                            name="email"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className="text-zinc-800 font-semibold">E-mail</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            type="email"
+                                            placeholder="Ex: cliente@email.com"
                                             {...field}
                                             className="!bg-white !border-zinc-300 focus:!border-amber-500 !text-zinc-900 !placeholder-zinc-400 h-12 text-base md:text-sm"
                                         />

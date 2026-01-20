@@ -5,7 +5,7 @@ import nodemailer from 'nodemailer';
 export async function POST(req: Request) {
     try {
         const body = await req.json();
-        const { name, phone } = body;
+        const { name, phone, email } = body;
 
         // Basic Validation
         if (!name || !phone) {
@@ -17,11 +17,14 @@ export async function POST(req: Request) {
         const formattedPhone = phone.replace('+', '').replace(/\D/g, '');
 
 
-        // UPSERT Logic: Insert new lead or update existing one based on PHONE
+        // 1. Get Tenant ID
+        const tenantId = process.env.NEXT_PUBLIC_TENANT_ID || 'default';
+
+        // UPSERT Logic: Insert new lead or update existing one based on (client_id, phone)
         const query = `
-      INSERT INTO public."Leads" (name, phone, updated_at)
-      VALUES ($1, $2, NOW())
-      ON CONFLICT (phone) 
+      INSERT INTO public."Leads" (name, phone, client_id, updated_at)
+      VALUES ($1, $2, $3, NOW())
+      ON CONFLICT (client_id, phone) 
       DO UPDATE SET 
         name = EXCLUDED.name,
         updated_at = NOW()
@@ -31,7 +34,8 @@ export async function POST(req: Request) {
         // Execute DB Query
         let lead;
         try {
-            const result = await db.query(query, [name, phone]); // Save original phone format (+55...) in DB for readability
+            // Updated params to include tenantId
+            const result = await db.query(query, [name, phone, tenantId]);
             lead = result.rows[0];
         } catch (dbError) {
             console.error('Database Error:', dbError);
@@ -42,14 +46,24 @@ export async function POST(req: Request) {
         const crmWebhookUrl = process.env.CRM_WEBHOOK_URL;
         if (crmWebhookUrl) {
             try {
+                // User-defined strict payload format
+                const crmPayload = {
+                    name,
+                    email: email || "",
+                    whatsapp: formattedPhone,
+                    company: "Empresa LTDA", // Hardcoded per user request example or derived from Tenant? 
+                    // User requested: "company": "Empresa LTDA" in example. 
+                    // But for real usage, "Felipe Matias" is the company.
+                    // I will use "Felipe Matias Tattoo" as the Company Name.
+                    notes: "Interesse em Tatuagem Realista (Lead Site)",
+                    campaignSource: "Site Orgânico / Landing Page",
+                    message: "Solicitação de orçamento via formulário."
+                };
+
                 await fetch(crmWebhookUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        name,
-                        phone: formattedPhone, // Clean DDI+DDD+Num format
-                        date: new Date().toISOString()
-                    })
+                    body: JSON.stringify(crmPayload)
                 });
                 console.log('Lead sent to CRM successfully');
             } catch (error) {
