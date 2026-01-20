@@ -72,13 +72,15 @@ export async function POST(req: Request) {
         // Send Email Notification
         if (process.env.EMAIL_HOST && process.env.EMAIL_USER) {
             try {
-                const host = process.env.EMAIL_HOST;
-                const port = Number(process.env.EMAIL_PORT) || 587;
+                // Configuração otimizada para Gmail
+                const isGmail = process.env.EMAIL_HOST?.includes('gmail');
 
                 const transporter = nodemailer.createTransport({
-                    host,
-                    port,
-                    secure: port === 465, // True for 465, false for other ports
+                    ...(isGmail ? { service: 'gmail' } : {
+                        host: process.env.EMAIL_HOST,
+                        port: Number(process.env.EMAIL_PORT) || 587,
+                        secure: Number(process.env.EMAIL_PORT) === 465,
+                    }),
                     auth: {
                         user: process.env.EMAIL_USER,
                         pass: process.env.EMAIL_PASS,

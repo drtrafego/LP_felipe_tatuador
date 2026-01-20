@@ -42,8 +42,8 @@ NEXT_PUBLIC_TENANT_NAME="Nome do Estúdio ou Tatuador"
 # --------------------------------------------------------
 # 3. Integração CRM (Webhook)
 # --------------------------------------------------------
-# URL do Zapier/n8n/Make para receber o JSON do lead
-CRM_WEBHOOK_URL="https://hooks.zapier.com/hooks/catch/..."
+# URL do CRM Próprio para receber o JSON do lead
+CRM_WEBHOOK_URL="https://casaldotrafego.vercel.app//api/webhooks..."
 
 # --------------------------------------------------------
 # 4. Configuração de E-mail (SMTP - Nodemailer)
