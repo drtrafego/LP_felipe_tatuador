@@ -128,10 +128,11 @@ export function ContactForm() {
                                     <FormControl>
                                         <div className="phone-input-container">
                                             <PhoneInput
+                                                key={country} // Force re-render when country is detected
                                                 placeholder={getPhoneNumberPlaceholder(country)}
                                                 value={field.value}
                                                 onChange={field.onChange}
-                                                defaultCountry="BR"
+                                                defaultCountry={country} // Use state country as default
                                                 width="100%"
                                                 country={country}
                                                 onCountryChange={(c) => { if (c) setCountry(c) }}
