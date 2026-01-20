@@ -106,7 +106,7 @@ export function ContactForm() {
                             name="name"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel className="text-zinc-800 font-semibold">Nome Completo</FormLabel>
+                                    <FormLabel className="text-zinc-100 font-semibold">Nome Completo</FormLabel>
                                     <FormControl>
                                         <Input
                                             placeholder="Ex: Felipe Silva"
@@ -124,7 +124,7 @@ export function ContactForm() {
                             name="phone"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel className="text-zinc-800 font-semibold">WhatsApp / Telefone</FormLabel>
+                                    <FormLabel className="text-zinc-100 font-semibold">WhatsApp / Telefone</FormLabel>
                                     <FormControl>
                                         <div className="phone-input-container">
                                             <PhoneInput
