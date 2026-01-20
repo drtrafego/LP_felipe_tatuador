@@ -35,7 +35,7 @@ export default function Home() {
       "latitude": -23.2237,
       "longitude": -45.9009
     },
-    "url": "https://felipematias.com.br",
+    "url": "https://www.felptattoo.com",
     "telephone": "+5512982881280",
     "priceRange": "$$$",
     "openingHoursSpecification": [

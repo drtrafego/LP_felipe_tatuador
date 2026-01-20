@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   creator: "Felipe Matias",
   publisher: "Felipe Matias",
   robots: "index, follow",
+  metadataBase: new URL("https://www.felptattoo.com"),
+  alternates: {
+    canonical: "/",
+  },
   other: {
     "geo.region": "BR-SP",
     "geo.placename": "São José dos Campos",

@@ -52,7 +52,7 @@ EMAIL_HOST="smtp.hostinger.com" # ou gmail, zoho, etc
 EMAIL_PORT="587"
 EMAIL_USER="noreply@seu-dominio.com"
 EMAIL_PASS="sua-senha-segura"
-EMAIL_TO="email-do-cliente-final@gmail.com"
+EMAIL_TO="felipe@felptattoo.com"
 ```
 
 ### 3. Configurar o Banco de Dados (Neon)
