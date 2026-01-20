@@ -185,10 +185,63 @@ Para alterar a cidade/localização, edite:
 
 ---
 
+---
+
+## 📂 Estrutura do Projeto
+
+Para ajudar na navegação, aqui está onde ficam os arquivos principais:
+
+```
+src/
+├── app/
+│   ├── api/contact/route.ts  # Backend (API do formulário)
+│   ├── tattoorealismo/       # Página secundária (antiga teste2)
+│   ├── obrigado/             # Página pós-cadastro
+│   ├── layout.tsx            # Layout Global (Fonts, SEO Metadata)
+│   └── page.tsx              # Página Principal (Home)
+├── components/
+│   ├── ui/                   # Componentes base (Botões, Inputs - Shadcn/UI)
+│   ├── contact-form.tsx      # Lógica do Formulário (Frontend)
+│   └── hero-section.tsx      # Seção Hero (Topo da página)
+├── lib/
+│   └── db.ts                 # Conexão com Banco de Dados (Postgres)
+└── .env.local                # Variáveis de Ambiente (Não comitar!)
+```
+
+---
+
+## 🎨 Guia de Personalização
+
+Quer adaptar para outro cliente? Veja onde mexer:
+
+### 1. Cores e Estilo
+*   **Cores do Tema:** Edite `src/app/globals.css` (variáveis `:root`).
+*   **Configuração Tailwind:** Veja `tailwind.config.ts`.
+
+### 2. Fontes
+*   **Tipografia:** O projeto usa `Inter` e `Outfit`. Para trocar, edite `src/app/layout.tsx`.
+
+### 3. Conteúdos e Textos
+*   Aterar textos da Home: `src/app/page.tsx` ou os componentes em `src/components/`.
+*   Aterar textos de "Tattoo Realismo": `src/app/tattoorealismo/page.tsx`.
+
+---
+
 ## 🚀 Comandos Úteis
 
 ```bash
 npm run dev   # Roda localmente (localhost:3000)
 npm run build # Gera build de produção
 npm run start # Roda o build
+npm run lint  # Verifica erros de código
 ```
+
+## ✅ Checklist de Replicação
+1. [ ] Clonar repositório.
+2. [ ] Criar `.env.local` com as credenciais do novo cliente.
+3. [ ] Rodar script SQL no banco Neon do novo cliente.
+4. [ ] Atualizar textos e imagens nas páginas.
+5. [ ] Subir no Vercel e configurar as mesmas variáveis de ambiente lá.
+
+---
+**Desenvolvido com foco em Alta Performance e Conversão.**
