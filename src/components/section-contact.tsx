@@ -128,7 +128,8 @@ export function SectionContact() {
                 <p>© {new Date().getFullYear()} Felp Tattoo. Todos os direitos reservados.</p>
                 <div className="mt-4 text-xs opacity-60 flex flex-col items-center justify-center gap-1">
                     <p>
-                        Desenvolvido por <a href="https://www.instagram.com/gastaomatos/" target="_blank" rel="noopener noreferrer" className="hover:text-black font-medium transition-colors">gastaomatos</a>
+                        <a href="/politica-de-privacidade" className="hover:text-black transition-colors mr-2">Política de Privacidade</a> |
+                        Desenvolvido por <a href="https://www.instagram.com/gastaomatos/" target="_blank" rel="noopener noreferrer" className="hover:text-black font-medium transition-colors ml-1">gastaomatos</a>
                     </p>
                 </div>
             </footer>
