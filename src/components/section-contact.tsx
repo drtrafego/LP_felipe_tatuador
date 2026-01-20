@@ -80,20 +80,7 @@ export function SectionContact() {
                             </ul>
                         </div>
 
-                        <div className="space-y-4 text-sm pt-4">
-                            <div className="flex items-center gap-3 text-neutral-600">
-                                <span className="w-8 h-8 rounded-full bg-zinc-100 flex items-center justify-center text-black border border-zinc-200">📧</span>
-                                <span>contato@felipetattoo.com</span>
-                            </div>
-                            <div className="flex items-center gap-3 text-neutral-600">
-                                <span className="w-8 h-8 rounded-full bg-zinc-100 flex items-center justify-center text-black border border-zinc-200">📍</span>
-                                <span>Avenida Andrômeda número 1280, 1º andar, sala 3<br />Jardim Satélite, São José dos Campos<br />Cep 12230-000</span>
-                            </div>
-                            <div className="flex items-center gap-3 text-neutral-600">
-                                <span className="w-8 h-8 rounded-full bg-zinc-100 flex items-center justify-center text-black border border-zinc-200">📱</span>
-                                <span>@felipetattoo</span>
-                            </div>
-                        </div>
+
                     </motion.div>
 
                     {/* FAQ */}
@@ -134,8 +121,16 @@ export function SectionContact() {
 
             {/* Footer Simple */}
             <footer className="mt-24 border-t border-zinc-200 pt-8 text-center text-neutral-500 text-sm">
-                <p>© {new Date().getFullYear()} Felipe Tatuador. Todos os direitos reservados.</p>
-                <p className="mt-2 text-xs opacity-50">Desenvolvido com foco em Realismo.</p>
+                <div className="mb-6 space-y-1">
+                    <p>Avenida Andrômeda número 1280, 1º andar, sala 3</p>
+                    <p>Jardim Satélite, São José dos Campos - CEP 12230-000</p>
+                </div>
+                <p>© {new Date().getFullYear()} Felp Tattoo. Todos os direitos reservados.</p>
+                <div className="mt-4 text-xs opacity-60 flex flex-col items-center justify-center gap-1">
+                    <p>
+                        Desenvolvido por <a href="https://www.instagram.com/gastaomatos/" target="_blank" rel="noopener noreferrer" className="hover:text-black font-medium transition-colors">gastaomatos</a>
+                    </p>
+                </div>
             </footer>
         </section>
     )
