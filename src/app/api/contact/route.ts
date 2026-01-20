@@ -86,13 +86,18 @@ export async function POST(req: Request) {
                     from: process.env.EMAIL_USER,
                     to: process.env.EMAIL_TO || process.env.EMAIL_USER,
                     subject: `Novo Lead: ${name}`,
-                    text: `Novo cadastro no site!\n\nNome: ${name}\nTelefone: ${formattedPhone}`,
+                    text: `Novo cadastro no site!\n\nNome: ${name}\nEmail: ${email}\nTelefone: ${formattedPhone}`,
                     html: `
-                    <div style="font-family: sans-serif; color: #333;">
-                        <h2>Novo Lead Capturado</h2>
+                    <div style="font-family: sans-serif; color: #333; max-width: 600px;">
+                        <h2>🚀 Novo Lead Capturado</h2>
                         <p><strong>Nome:</strong> ${name}</p>
-                        <p><strong>Telefone:</strong> <a href="https://wa.me/${formattedPhone}">${formattedPhone}</a></p>
-                        <p><em>Enviado para CRM: ${crmWebhookUrl ? 'Sim' : 'Não Configurado'}</em></p>
+                        <p><strong>E-mail:</strong> ${email || 'Não informado'}</p>
+                        <p><strong>Telefone:</strong> <a href="https://wa.me/${formattedPhone}" style="color: #2563eb; text-decoration: none;">${formattedPhone} (WhatsApp)</a></p>
+                        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
+                        <p style="font-size: 14px; color: #666;">
+                            <em>Origem: ${process.env.NEXT_PUBLIC_TENANT_NAME}</em><br/>
+                            <em>Enviado para CRM: ${crmWebhookUrl ? '✅ Sim' : '❌ Não Configurado'}</em>
+                        </p>
                     </div>
                 `,
                 });
