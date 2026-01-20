@@ -706,10 +706,19 @@ export default function Teste2Page() {
             </section>
 
             {/* Footer */}
-            <footer className="py-8 bg-black border-t border-zinc-800 px-4">
-                <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-neutral-500">
-                    <p>© {new Date().getFullYear()} Felipe Tatuador. Todos os direitos reservados.</p>
-                    <p className="text-xs opacity-50">Desenvolvido com foco em Realismo.</p>
+            <footer className="py-12 bg-black border-t border-zinc-900 px-4 text-center">
+                <div className="max-w-6xl mx-auto flex flex-col items-center gap-6 text-sm text-neutral-500">
+                    <div className="space-y-1">
+                        <p>Avenida Andrômeda número 1280, 1º andar, sala 3</p>
+                        <p>Jardim Satélite, São José dos Campos - CEP 12230-000</p>
+                    </div>
+                    <p>© {new Date().getFullYear()} Felp Tattoo. Todos os direitos reservados.</p>
+                    <div className="text-xs opacity-60 flex flex-col items-center justify-center gap-1">
+                        <p>
+                            <a href="/politica-de-privacidade" className="hover:text-white transition-colors mr-2">Política de Privacidade</a> |
+                            Desenvolvido por <a href="https://www.instagram.com/gastaomatos/" target="_blank" rel="noopener noreferrer" className="hover:text-white font-medium transition-colors ml-1">gastaomatos</a>
+                        </p>
+                    </div>
                 </div>
             </footer>
 
