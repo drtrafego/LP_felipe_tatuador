@@ -51,10 +51,7 @@ export async function POST(req: Request) {
                     name,
                     email: email || "",
                     whatsapp: formattedPhone,
-                    company: "Empresa LTDA", // Hardcoded per user request example or derived from Tenant? 
-                    // User requested: "company": "Empresa LTDA" in example. 
-                    // But for real usage, "Felipe Matias" is the company.
-                    // I will use "Felipe Matias Tattoo" as the Company Name.
+                    company: process.env.NEXT_PUBLIC_TENANT_NAME || "Empresa LTDA",
                     notes: "Interesse em Tatuagem Realista (Lead Site)",
                     campaignSource: "Site Orgânico / Landing Page",
                     message: "Solicitação de orçamento via formulário."
