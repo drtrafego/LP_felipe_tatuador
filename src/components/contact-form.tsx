@@ -124,7 +124,7 @@ export function ContactForm() {
                             name="phone"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel className="text-zinc-100 font-semibold">WhatsApp / Telefone</FormLabel>
+                                    <FormLabel className="text-zinc-100 font-semibold">WhatsApp</FormLabel>
                                     <FormControl>
                                         <div className="phone-input-container">
                                             <PhoneInput
