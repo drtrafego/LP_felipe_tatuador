@@ -11,7 +11,7 @@ export const metadata = {
   title: "Felipe Matias - Tatuagem Realista em São José dos Campos",
   description: "Estúdio de Tatuagem em SJC especializado em Realismo. Projetos exclusivos, ambiente privado e atendimento personalizado. Solicite um orçamento.",
   alternates: {
-    canonical: "https://felipematias.com.br", // Replace with actual domain if known, implies canonical
+    canonical: "https://www.felptattoo.com",
   }
 }
 
@@ -20,7 +20,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "TattooParlor",
     "name": "Felipe Matias Tattoo",
-    "image": "https://felipematias.com.br/IMG_2317.jpg", // Using one of the hero images
+    "image": "https://www.felptattoo.com/IMG_2317.jpg",
     "description": "Especialista em Tatuagem Realista e Blackwork em São José dos Campos.",
     "address": {
       "@type": "PostalAddress",
