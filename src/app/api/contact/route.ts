@@ -29,11 +29,15 @@ export async function POST(req: Request) {
 
         // UPSERT Logic: Insert new lead or update existing one based on (client_id, phone)
         const query = `
-      INSERT INTO public."Leads" (name, phone, client_id, updated_at)
-      VALUES ($1, $2, $3, NOW())
+      INSERT INTO public."Leads" (name, phone, client_id, updated_at, utm_source, utm_medium, utm_campaign, page_path)
+      VALUES ($1, $2, $3, NOW(), $4, $5, $6, $7)
       ON CONFLICT (client_id, phone) 
       DO UPDATE SET 
         name = EXCLUDED.name,
+        utm_source = COALESCE(EXCLUDED.utm_source, public."Leads".utm_source),
+        utm_medium = COALESCE(EXCLUDED.utm_medium, public."Leads".utm_medium),
+        utm_campaign = COALESCE(EXCLUDED.utm_campaign, public."Leads".utm_campaign),
+        page_path = EXCLUDED.page_path,
         updated_at = NOW()
       RETURNING *;
     `;
@@ -41,8 +45,8 @@ export async function POST(req: Request) {
         // Execute DB Query
         let lead;
         try {
-            // Updated params to include tenantId
-            const result = await db.query(query, [name, phone, tenantId]);
+            // Updated params to include tenantId and UTMs
+            const result = await db.query(query, [name, phone, tenantId, utm_source, utm_medium, utm_campaign, page_path]);
             lead = result.rows[0];
         } catch (dbError) {
             console.error('Database Error:', dbError);
