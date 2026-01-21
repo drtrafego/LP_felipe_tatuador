@@ -1,5 +1,6 @@
 "use client"
 
+import { Suspense } from "react"
 import { motion } from "framer-motion"
 import { ContactForm } from "@/components/contact-form"
 import {
@@ -57,7 +58,9 @@ export function SectionContact() {
                         <p className="text-sm text-neutral-500">Atendimento direto. Sem enrolação. Sem surpresa no final.</p>
                     </div>
 
-                    <ContactForm />
+                    <Suspense fallback={<div className="h-[400px] w-full bg-zinc-100 animate-pulse rounded-xl" />}>
+                        <ContactForm />
+                    </Suspense>
 
                 </motion.div>
 

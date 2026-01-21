@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams, usePathname } from "next/navigation"
 import 'react-phone-number-input/style.css'
 // @ts-ignore
 import PhoneInput from 'react-phone-number-input'
@@ -34,6 +34,8 @@ const formSchema = z.object({
 
 export function ContactForm() {
     const router = useRouter()
+    const searchParams = useSearchParams()
+    const pathname = usePathname()
     const [loading, setLoading] = useState(false)
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -68,11 +70,24 @@ export function ContactForm() {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setLoading(true)
+
+        // Capture UTMs and Page Path
+        const utm_source = searchParams.get('utm_source') || '';
+        const utm_medium = searchParams.get('utm_medium') || '';
+        const utm_campaign = searchParams.get('utm_campaign') || '';
+        const page_path = pathname;
+
         try {
             const response = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(values),
+                body: JSON.stringify({
+                    ...values,
+                    utm_source,
+                    utm_medium,
+                    utm_campaign,
+                    page_path
+                }),
             })
 
             if (response.ok) {
