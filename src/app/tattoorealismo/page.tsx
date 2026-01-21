@@ -1,5 +1,6 @@
 "use client"
 
+import { Suspense } from "react"
 import { motion } from "framer-motion"
 
 import { Button } from "@/components/ui/button"
@@ -639,7 +640,9 @@ export default function Teste2Page() {
                         {/* Right: Form */}
                         <div className="bg-zinc-800/50 border border-zinc-700 rounded-2xl p-6 md:p-8">
                             {/* Using the updated ContactForm component which has the logic and improved styling */}
-                            <ContactForm />
+                            <Suspense fallback={<div className="h-[400px] w-full bg-zinc-700/50 animate-pulse rounded-xl" />}>
+                                <ContactForm />
+                            </Suspense>
                         </div>
                     </div>
                 </div>
