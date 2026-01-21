@@ -5,7 +5,14 @@ import nodemailer from 'nodemailer';
 export async function POST(req: Request) {
     try {
         const body = await req.json();
-        const { name, phone } = body;
+        const {
+            name,
+            phone,
+            utm_source,
+            utm_medium,
+            utm_campaign,
+            page_path
+        } = body;
 
         // Basic Validation
         if (!name || !phone) {
@@ -53,8 +60,10 @@ export async function POST(req: Request) {
                     whatsapp: formattedPhone,
                     company: "", // Em branco conforme solicitado
                     notes: "",   // Em branco conforme solicitado
-                    campaignSource: "Site Orgânico / Landing Page",
-                    message: "Solicitação de orçamento via formulário."
+                    campaignSource: utm_source ? `${utm_source} / ${utm_medium}` : "Site Orgânico / Landing Page",
+                    message: "Solicitação de orçamento via formulário.",
+                    utm_campaign,
+                    page_path
                 };
 
                 await fetch(crmWebhookUrl, {
@@ -88,20 +97,58 @@ export async function POST(req: Request) {
                 });
 
                 await transporter.sendMail({
-                    from: process.env.EMAIL_USER,
+                    from: `"Felp Tattoo Lead" <${process.env.EMAIL_USER}>`,
                     to: process.env.EMAIL_TO || process.env.EMAIL_USER,
                     subject: `Novo Lead: ${name}`,
-                    text: `Novo cadastro no site!\n\nNome: ${name}\nTelefone: ${formattedPhone}`,
+                    text: `Novo cadastro!\nNome: ${name}\nWhats: ${formattedPhone}\nOrigem: ${utm_source || 'Direto'}`,
                     html: `
-                    <div style="font-family: sans-serif; color: #333; max-width: 600px;">
-                        <h2>🚀 Novo Lead Capturado</h2>
-                        <p><strong>Nome:</strong> ${name}</p>
-                        <p><strong>Telefone:</strong> <a href="https://wa.me/${formattedPhone}" style="color: #2563eb; text-decoration: none;">${formattedPhone} (WhatsApp)</a></p>
-                        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
-                        <p style="font-size: 14px; color: #666;">
-                            <em>Origem: ${process.env.NEXT_PUBLIC_TENANT_NAME}</em><br/>
-                            <em>Enviado para CRM: ${crmWebhookUrl ? '✅ Sim' : '❌ Não Configurado'}</em>
-                        </p>
+                    <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px;">
+                        <h2 style="color: #d97706;">🚀 Novo Lead Capturado!</h2>
+                        <p>Um novo cliente em potencial acabou de se cadastrar no site.</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                            <tr>
+                                <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Nome:</strong></td>
+                                <td style="padding: 10px; border-bottom: 1px solid #ddd;">${name}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>WhatsApp:</strong></td>
+                                <td style="padding: 10px; border-bottom: 1px solid #ddd;">
+                                    <a href="https://wa.me/${formattedPhone}" style="color: #2563eb; text-decoration: none; font-weight: bold;" target="_blank">
+                                    ${formattedPhone} (Clique para Iniciar)
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <!-- Seção de Origem (UTM) -->
+                            <tr>
+                                <td style="padding: 10px; border-bottom: 1px solid #ddd; background-color: #f9f9f9;"><strong>Origem (UTM):</strong></td>
+                                <td style="padding: 10px; border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                                    ${utm_source || '-'} / ${utm_medium || '-'}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border-bottom: 1px solid #ddd; background-color: #f9f9f9;"><strong>Campanha:</strong></td>
+                                <td style="padding: 10px; border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                                    ${utm_campaign || '-'}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border-bottom: 1px solid #ddd; background-color: #f9f9f9;"><strong>Página:</strong></td>
+                                <td style="padding: 10px; border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                                    ${page_path || '-'}
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Data:</strong></td>
+                                <td style="padding: 10px; border-bottom: 1px solid #ddd;">${new Date().toLocaleString('pt-BR')}</td>
+                            </tr>
+                        </table>
+                        
+                        <div style="margin-top: 20px; font-size: 12px; color: #666; border-top: 1px solid #eee; padding-top: 10px;">
+                            <p>Este é um email automático do sistema Felp Tattoo.</p>
+                        </div>
                     </div>
                 `,
                 });
