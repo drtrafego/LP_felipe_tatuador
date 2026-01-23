@@ -64,9 +64,11 @@ export async function POST(req: Request) {
                     whatsapp: formattedPhone,
                     company: "", // Em branco conforme solicitado
                     notes: "",   // Em branco conforme solicitado
+                    utm_source: utm_source || "Site Orgânico",
+                    utm_medium: utm_medium || "Landing Page",
+                    utm_campaign: utm_campaign || "",
                     campaignSource: utm_source ? `${utm_source} / ${utm_medium}` : "Site Orgânico / Landing Page",
                     message: "Solicitação de orçamento via formulário.",
-                    utm_campaign,
                     page_path
                 };
 
