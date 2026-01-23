@@ -62,11 +62,17 @@ export async function POST(req: Request) {
                     name,
                     email: "",
                     whatsapp: formattedPhone,
-                    company: "", // Em branco conforme solicitado
-                    notes: "",   // Em branco conforme solicitado
+                    company: "",
+                    notes: "",
+                    // Variações comuns para garantir reconhecimento no CRM
                     utm_source: utm_source || "Site Orgânico",
                     utm_medium: utm_medium || "Landing Page",
                     utm_campaign: utm_campaign || "",
+                    source: utm_source || "Site Orgânico",
+                    medium: utm_medium || "Landing Page",
+                    campaign: utm_campaign || "",
+                    traffic_source: utm_source || "Site Orgânico",
+                    // Mantendo o campo original também
                     campaignSource: utm_source ? `${utm_source} / ${utm_medium}` : "Site Orgânico / Landing Page",
                     message: "Solicitação de orçamento via formulário.",
                     page_path
