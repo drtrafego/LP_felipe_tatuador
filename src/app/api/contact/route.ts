@@ -74,7 +74,7 @@ export async function POST(req: Request) {
                     traffic_source: utm_source || "Site Orgânico",
                     // Mantendo o campo original também
                     campaignSource: utm_source ? `${utm_source} / ${utm_medium}` : "Site Orgânico / Landing Page",
-                    message: "Solicitação de orçamento via formulário.",
+                    message: "",
                     page_path
                 };
 
