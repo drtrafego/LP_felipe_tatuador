@@ -10,7 +10,7 @@ if (!dbUrlMatch) {
     process.exit(1);
 }
 
-const databaseUrl = dbUrlMatch[1];
+const databaseUrl = dbUrlMatch[1].replace('&channel_binding=require', '');
 
 const pool = new Pool({
     connectionString: databaseUrl,
@@ -22,15 +22,7 @@ async function checkLeads() {
     try {
         const res = await client.query('SELECT name, phone, utm_source, utm_medium, utm_campaign, page_path, updated_at FROM public."Leads" ORDER BY updated_at DESC LIMIT 1;');
         if (res.rows.length > 0) {
-            const lead = res.rows[0];
-            console.log('--- MOST RECENT LEAD ---');
-            console.log('Name:', lead.name);
-            console.log('Phone:', lead.phone);
-            console.log('Source:', lead.utm_source);
-            console.log('Medium:', lead.utm_medium);
-            console.log('Campaign:', lead.utm_campaign);
-            console.log('Path:', lead.page_path);
-            console.log('Time:', lead.updated_at);
+            console.log(JSON.stringify(res.rows[0], null, 2));
         } else {
             console.log('No leads found.');
         }
