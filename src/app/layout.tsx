@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/icon.png",
+    icon: "/flavicon.ico",
   },
   other: {
     "geo.region": "BR-SP",
