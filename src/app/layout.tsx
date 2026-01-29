@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: "/icon.png",
+  },
   other: {
     "geo.region": "BR-SP",
     "geo.placename": "São José dos Campos",
