@@ -4,7 +4,14 @@ import { usePathname } from "next/navigation";
 import Script from "next/script";
 import { useEffect, useState } from "react";
 
-const PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID || "2249538802207120"; // Fallback purely for safety, usually handled by env
+const PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID || "2249538802207120";
+
+declare global {
+    interface Window {
+        fbq: any;
+        _fbq: any;
+    }
+}
 
 export const FacebookPixel = () => {
     const pathname = usePathname();
