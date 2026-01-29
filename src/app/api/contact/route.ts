@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import nodemailer from 'nodemailer';
+import { sendMetaEvent } from '@/lib/facebook';
 
 export async function POST(req: Request) {
     try {
@@ -48,6 +49,29 @@ export async function POST(req: Request) {
             // Updated params to include tenantId and UTMs
             const result = await db.query(query, [name, phone, tenantId, utm_source, utm_medium, utm_campaign, page_path]);
             lead = result.rows[0];
+
+            // --- META CAPI: LEAD EVENT ---
+            // Fire and forget (don't block response)
+            const userAgent = req.headers.get('user-agent') || '';
+            // Getting IP in Next.js App Router can be tricky without proxies, usually 'x-forwarded-for'
+            const ip = req.headers.get('x-forwarded-for')?.split(',')[0] || '';
+
+            sendMetaEvent('Lead', {
+                phone: formattedPhone, // Helper will hash this
+                firstName: name,       // Helper will hash this
+                userAgent: userAgent,
+                ip: ip,
+                url: req.headers.get('referer') || '',
+            }, {
+                content_name: 'Lead Tatuagem',
+                currency: 'BRL',
+                value: 0, // Or potential value if known
+                source: utm_source,
+                medium: utm_medium,
+                campaign: utm_campaign
+            }).catch(err => console.error('Meta CAPI background error:', err));
+            // -----------------------------
+
         } catch (dbError) {
             console.error('Database Error:', dbError);
             return NextResponse.json({ error: 'Database operation failed' }, { status: 500 });

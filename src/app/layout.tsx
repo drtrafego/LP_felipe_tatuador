@@ -30,6 +30,10 @@ export const metadata: Metadata = {
   }
 };
 
+import { FacebookPixel } from "@/components/FacebookPixel";
+
+// ... (existing imports)
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,6 +42,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="dark">
       <body className={`${inter.variable} ${outfit.variable} antialiased bg-background text-foreground selection:bg-primary selection:text-primary-foreground`}>
+        <FacebookPixel />
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
