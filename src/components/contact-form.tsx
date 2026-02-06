@@ -75,6 +75,7 @@ export function ContactForm() {
         const utm_source = searchParams.get('utm_source') || '';
         const utm_medium = searchParams.get('utm_medium') || '';
         const utm_campaign = searchParams.get('utm_campaign') || '';
+        const utm_term = searchParams.get('utm_term') || '';
         const page_path = pathname;
 
         try {
@@ -86,6 +87,7 @@ export function ContactForm() {
                     utm_source,
                     utm_medium,
                     utm_campaign,
+                    utm_term,
                     page_path
                 }),
             })

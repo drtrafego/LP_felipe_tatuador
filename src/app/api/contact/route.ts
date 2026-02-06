@@ -12,6 +12,7 @@ export async function POST(req: Request) {
             utm_source,
             utm_medium,
             utm_campaign,
+            utm_term,
             page_path
         } = body;
 
@@ -30,14 +31,15 @@ export async function POST(req: Request) {
 
         // UPSERT Logic: Insert new lead or update existing one based on (client_id, phone)
         const query = `
-      INSERT INTO public."Leads" (name, phone, client_id, updated_at, utm_source, utm_medium, utm_campaign, page_path)
-      VALUES ($1, $2, $3, NOW(), $4, $5, $6, $7)
+      INSERT INTO public."Leads" (name, phone, client_id, updated_at, utm_source, utm_medium, utm_campaign, utm_term, page_path)
+      VALUES ($1, $2, $3, NOW(), $4, $5, $6, $7, $8)
       ON CONFLICT (client_id, phone) 
       DO UPDATE SET 
         name = EXCLUDED.name,
         utm_source = COALESCE(EXCLUDED.utm_source, public."Leads".utm_source),
         utm_medium = COALESCE(EXCLUDED.utm_medium, public."Leads".utm_medium),
         utm_campaign = COALESCE(EXCLUDED.utm_campaign, public."Leads".utm_campaign),
+        utm_term = COALESCE(EXCLUDED.utm_term, public."Leads".utm_term),
         page_path = EXCLUDED.page_path,
         updated_at = NOW()
       RETURNING *;
@@ -47,7 +49,7 @@ export async function POST(req: Request) {
         let lead;
         try {
             // Updated params to include tenantId and UTMs
-            const result = await db.query(query, [name, phone, tenantId, utm_source, utm_medium, utm_campaign, page_path]);
+            const result = await db.query(query, [name, phone, tenantId, utm_source, utm_medium, utm_campaign, utm_term, page_path]);
             lead = result.rows[0];
 
             // --- META CAPI: LEAD EVENT ---
@@ -68,7 +70,8 @@ export async function POST(req: Request) {
                 value: 0, // Or potential value if known
                 source: utm_source,
                 medium: utm_medium,
-                campaign: utm_campaign
+                campaign: utm_campaign,
+                term: utm_term
             }).catch(err => console.error('Meta CAPI background error:', err));
             // -----------------------------
 
