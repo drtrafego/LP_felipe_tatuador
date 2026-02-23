@@ -13,7 +13,10 @@ export async function POST(req: Request) {
             utm_medium,
             utm_campaign,
             utm_term,
-            page_path
+            page_path,
+            fbp,
+            fbc,
+            externalId
         } = body;
 
         // Basic Validation
@@ -64,6 +67,9 @@ export async function POST(req: Request) {
                 userAgent: userAgent,
                 ip: ip,
                 url: req.headers.get('referer') || '',
+                fbp: fbp,
+                fbc: fbc,
+                externalId: externalId
             }, {
                 content_name: 'Lead Tatuagem',
                 currency: 'BRL',

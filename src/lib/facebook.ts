@@ -13,6 +13,7 @@ interface MetaUserData {
     client_user_agent?: string;
     fbc?: string; // Click ID
     fbp?: string; // Browser ID
+    external_id?: string; // Unique ID for cross-channel tracking
 }
 
 interface MetaEvent {
@@ -32,7 +33,17 @@ export const hashData = (data: string): string => {
 
 export const sendMetaEvent = async (
     eventName: MetaEventName,
-    userData: { email?: string; phone?: string; firstName?: string; ip?: string; userAgent?: string; url?: string },
+    userData: { 
+        email?: string; 
+        phone?: string; 
+        firstName?: string; 
+        ip?: string; 
+        userAgent?: string; 
+        url?: string;
+        fbc?: string;
+        fbp?: string;
+        externalId?: string;
+    },
     customData?: any
 ) => {
     if (!PIXEL_ID || !ACCESS_TOKEN) {
@@ -51,6 +62,9 @@ export const sendMetaEvent = async (
             fn: userData.firstName ? hashData(userData.firstName) : undefined,
             client_ip_address: userData.ip,
             client_user_agent: userData.userAgent,
+            fbc: userData.fbc,
+            fbp: userData.fbp,
+            external_id: userData.externalId,
         },
         custom_data: customData,
     };

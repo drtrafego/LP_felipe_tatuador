@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
+import { getCookie } from "@/lib/cookies"
 
 const formSchema = z.object({
     name: z.string().min(2, {
@@ -78,6 +79,11 @@ export function ContactForm() {
         const utm_term = searchParams.get('utm_term') || '';
         const page_path = pathname;
 
+        // Capture Pixel Cookies for CAPI
+        const fbp = getCookie('_fbp') || '';
+        const fbc = getCookie('_fbc') || '';
+        const externalId = getCookie('_ext_id') || '';
+
         try {
             const response = await fetch("/api/contact", {
                 method: "POST",
@@ -88,7 +94,10 @@ export function ContactForm() {
                     utm_medium,
                     utm_campaign,
                     utm_term,
-                    page_path
+                    page_path,
+                    fbp,
+                    fbc,
+                    externalId
                 }),
             })
 
@@ -179,7 +188,7 @@ export function ContactForm() {
                         font-size: 16px; /* text-base */
                     }
                     .PhoneInputInput::placeholder {
-                         color: #a1a1aa; /* zinc-400 */
+                        color: #a1a1aa; /* zinc-400 */
                     }
                     .PhoneInputCountrySelect {
                         background: white;
@@ -188,9 +197,9 @@ export function ContactForm() {
                         opacity: 0; /* Hide the select but keep it clickable */
                     }
                     .PhoneInputCountryIcon {
-                         width: 24px;
-                         height: 24px;
-                         box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+                        width: 24px;
+                        height: 24px;
+                        box-shadow: 0 1px 2px rgba(0,0,0,0.1);
                     }
                 `}</style>
             </CardContent>

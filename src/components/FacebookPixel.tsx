@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import Script from "next/script";
 import { useEffect, useState } from "react";
+import { getCookie, setCookie } from "@/lib/cookies";
 
 const PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID || "2249538802207120";
 
@@ -17,10 +18,17 @@ export const FacebookPixel = () => {
     const pathname = usePathname();
     const [hasScrolled75, setHasScrolled75] = useState(false);
 
-    // 1. PageView Tracking
+    // 1. External ID Management & PageView Tracking
     useEffect(() => {
+        // Ensure External ID exists
+        let externalId = getCookie("_ext_id");
+        if (!externalId) {
+            externalId = crypto.randomUUID();
+            setCookie("_ext_id", externalId, 365); // 1 year
+        }
+
         if (typeof window.fbq === "function") {
-            window.fbq("track", "PageView");
+            window.fbq("track", "PageView", { external_id: externalId });
         }
     }, [pathname]);
 
@@ -66,7 +74,9 @@ export const FacebookPixel = () => {
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '${PIXEL_ID}');
+            fbq('init', '${PIXEL_ID}', {
+              external_id: typeof document !== 'undefined' ? (document.cookie.match('(^|;)\\\\s*_ext_id\\\\s*=\\\\s*([^;]+)')?.pop() || undefined) : undefined
+            });
             fbq('track', 'PageView');
           `,
                 }}
