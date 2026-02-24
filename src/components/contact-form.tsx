@@ -79,6 +79,16 @@ export function ContactForm() {
         const utm_term = searchParams.get('utm_term') || '';
         const page_path = pathname;
 
+        // Capture Dynamic Meta Variables
+        const ad_id = searchParams.get('ad_id') || '';
+        const adset_id = searchParams.get('adset_id') || '';
+        const campaign_id = searchParams.get('campaign_id') || '';
+        const ad_name = searchParams.get('ad_name') || '';
+        const adset_name = searchParams.get('adset_name') || '';
+        const campaign_name = searchParams.get('campaign_name') || '';
+        const placement = searchParams.get('placement') || '';
+        const site_source_name = searchParams.get('site_source_name') || '';
+
         // Capture Pixel Cookies for CAPI
         const fbp = getCookie('_fbp') || '';
         const fbc = getCookie('_fbc') || '';
@@ -97,7 +107,15 @@ export function ContactForm() {
                     page_path,
                     fbp,
                     fbc,
-                    externalId
+                    externalId,
+                    ad_id,
+                    adset_id,
+                    campaign_id,
+                    ad_name,
+                    adset_name,
+                    campaign_name,
+                    placement,
+                    site_source_name
                 }),
             })
 

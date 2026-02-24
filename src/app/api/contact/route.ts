@@ -16,7 +16,15 @@ export async function POST(req: Request) {
             page_path,
             fbp,
             fbc,
-            externalId
+            externalId,
+            ad_id,
+            adset_id,
+            campaign_id,
+            ad_name,
+            adset_name,
+            campaign_name,
+            placement,
+            site_source_name
         } = body;
 
         // Basic Validation
@@ -34,8 +42,12 @@ export async function POST(req: Request) {
 
         // UPSERT Logic: Insert new lead or update existing one based on (client_id, phone)
         const query = `
-      INSERT INTO public."Leads" (name, phone, client_id, updated_at, utm_source, utm_medium, utm_campaign, utm_term, page_path)
-      VALUES ($1, $2, $3, NOW(), $4, $5, $6, $7, $8)
+      INSERT INTO public."Leads" (
+        name, phone, client_id, updated_at, 
+        utm_source, utm_medium, utm_campaign, utm_term, page_path,
+        ad_id, adset_id, campaign_id, ad_name, adset_name, campaign_name, placement, site_source_name
+      )
+      VALUES ($1, $2, $3, NOW(), $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
       ON CONFLICT (client_id, phone) 
       DO UPDATE SET 
         name = EXCLUDED.name,
@@ -44,6 +56,14 @@ export async function POST(req: Request) {
         utm_campaign = COALESCE(EXCLUDED.utm_campaign, public."Leads".utm_campaign),
         utm_term = COALESCE(EXCLUDED.utm_term, public."Leads".utm_term),
         page_path = EXCLUDED.page_path,
+        ad_id = COALESCE(EXCLUDED.ad_id, public."Leads".ad_id),
+        adset_id = COALESCE(EXCLUDED.adset_id, public."Leads".adset_id),
+        campaign_id = COALESCE(EXCLUDED.campaign_id, public."Leads".campaign_id),
+        ad_name = COALESCE(EXCLUDED.ad_name, public."Leads".ad_name),
+        adset_name = COALESCE(EXCLUDED.adset_name, public."Leads".adset_name),
+        campaign_name = COALESCE(EXCLUDED.campaign_name, public."Leads".campaign_name),
+        placement = COALESCE(EXCLUDED.placement, public."Leads".placement),
+        site_source_name = COALESCE(EXCLUDED.site_source_name, public."Leads".site_source_name),
         updated_at = NOW()
       RETURNING *;
     `;
@@ -51,8 +71,12 @@ export async function POST(req: Request) {
         // Execute DB Query
         let lead;
         try {
-            // Updated params to include tenantId and UTMs
-            const result = await db.query(query, [name, phone, tenantId, utm_source, utm_medium, utm_campaign, utm_term, page_path]);
+            // Updated params to include tenantId, UTMs and dynamic Meta variables
+            const result = await db.query(query, [
+                name, phone, tenantId,
+                utm_source, utm_medium, utm_campaign, utm_term, page_path,
+                ad_id, adset_id, campaign_id, ad_name, adset_name, campaign_name, placement, site_source_name
+            ]);
             lead = result.rows[0];
 
             // --- META CAPI: LEAD EVENT ---
@@ -77,7 +101,15 @@ export async function POST(req: Request) {
                 source: utm_source,
                 medium: utm_medium,
                 campaign: utm_campaign,
-                term: utm_term
+                term: utm_term,
+                ad_id,
+                adset_id,
+                campaign_id,
+                ad_name,
+                adset_name,
+                campaign_name,
+                placement,
+                site_source_name
             }).catch(err => console.error('Meta CAPI background error:', err));
             // -----------------------------
 
