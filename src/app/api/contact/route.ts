@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { db } from '@/lib/db';
 import nodemailer from 'nodemailer';
-import { sendMetaEvent } from '@/lib/facebook';
+import { sendMetaCAPI } from '@/lib/tracking-server';
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
         const {
@@ -80,38 +81,48 @@ export async function POST(req: Request) {
             lead = result.rows[0];
 
             // --- META CAPI: LEAD EVENT ---
-            // Fire and forget (don't block response)
             const userAgent = req.headers.get('user-agent') || '';
-            // Getting IP in Next.js App Router can be tricky without proxies, usually 'x-forwarded-for'
             const ip = req.headers.get('x-forwarded-for')?.split(',')[0] || '';
+            // Read cookies from request as fallback (more reliable than from form)
+            const fbpServer = req.cookies.get('_fbp')?.value || fbp;
+            const fbcServer = req.cookies.get('_fbc')?.value || fbc;
+            const origin = req.headers.get('origin') || 'https://www.felptattoo.com';
 
-            sendMetaEvent('Lead', {
-                phone: formattedPhone, // Helper will hash this
-                firstName: name,       // Helper will hash this
-                userAgent: userAgent,
-                ip: ip,
-                url: req.headers.get('referer') || '',
-                fbp: fbp,
-                fbc: fbc,
-                externalId: externalId
-            }, {
-                content_name: 'Lead Tatuagem',
-                currency: 'BRL',
-                value: 0, // Or potential value if known
-                source: utm_source,
-                medium: utm_medium,
-                campaign: utm_campaign,
-                term: utm_term,
-                ad_id,
-                adset_id,
-                campaign_id,
-                ad_name,
-                adset_name,
-                campaign_name,
-                placement,
-                site_source_name
-            }).catch(err => console.error('Meta CAPI background error:', err));
-            // -----------------------------
+            // event_id = lead.id for deduplication with the Pixel event on the client
+            const eventId = lead?.id?.toString() || Date.now().toString();
+
+            sendMetaCAPI(
+                'Lead',
+                {
+                    ph: formattedPhone,
+                    fn: name.split(' ')[0],
+                    ip,
+                    ua: userAgent,
+                    fbc: fbcServer,
+                    fbp: fbpServer,
+                    external_id: externalId,
+                    event_source_url: `${origin}/obrigado`,
+                },
+                {
+                    content_name: 'Lead Tatuagem',
+                    currency: 'BRL',
+                    value: 0,
+                    utm_source,
+                    utm_medium,
+                    utm_campaign,
+                    utm_term,
+                    ad_id,
+                    adset_id,
+                    campaign_id,
+                    ad_name,
+                    adset_name,
+                    campaign_name,
+                    placement,
+                    site_source_name
+                },
+                eventId
+            ).catch(err => console.error('Meta CAPI background error:', err));
+            // ----------------------------
 
         } catch (dbError) {
             console.error('Database Error:', dbError);

@@ -25,6 +25,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { getCookie } from "@/lib/cookies"
+import { fbEvent } from "@/lib/tracking"
 
 const formSchema = z.object({
     name: z.string().min(2, {
@@ -120,7 +121,11 @@ export function ContactForm() {
             })
 
             if (response.ok) {
-                router.push("/obrigado")
+                const data = await response.json()
+                const leadId = data?.lead?.id?.toString() || Date.now().toString()
+                // Fire Pixel Lead event with same event_id as CAPI for deduplication
+                fbEvent('Lead', {}, leadId)
+                router.push(`/obrigado?lid=${leadId}`)
             } else {
                 const data = await response.json()
                 console.error("Erro ao enviar:", data)
