@@ -98,6 +98,7 @@ export async function POST(req: NextRequest) {
                 {
                     ph: formattedPhone,
                     fn: name.split(' ')[0],
+                    ln: name.split(' ').slice(1).join(' ') || undefined,
                     ip,
                     ua: userAgent,
                     fbc: fbcServer,

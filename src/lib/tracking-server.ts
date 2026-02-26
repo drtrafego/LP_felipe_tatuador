@@ -21,11 +21,16 @@ interface MetaCAPIUserData {
     em?: string;        // email (plaintext - will be hashed)
     ph?: string;        // phone (plaintext - will be hashed)
     fn?: string;        // first name (plaintext - will be hashed)
+    ln?: string;        // last name (plaintext - will be hashed)
+    zp?: string;        // zip/postal code (plaintext - will be hashed)
+    db?: string;        // date of birth (plaintext - will be hashed)
+    ct?: string;        // city (plaintext - will be hashed)
+    st?: string;        // state/province (plaintext - will be hashed)
     ip?: string;
     ua?: string;        // user agent
-    fbc?: string;       // _fbc cookie (click id)
-    fbp?: string;       // _fbp cookie (browser id)
-    external_id?: string;
+    fbc?: string;       // _fbc cookie (click id, UNHASHED)
+    fbp?: string;       // _fbp cookie (browser id, UNHASHED)
+    external_id?: string; // external identifier (UNHASHED)
     event_source_url?: string;
 }
 
@@ -59,13 +64,16 @@ export async function sendMetaCAPI(
                     em: userData.em ? [await hashData(userData.em)] : undefined,
                     ph: userData.ph ? [await hashData(userData.ph)] : undefined,
                     fn: userData.fn ? [await hashData(userData.fn)] : undefined,
+                    ln: userData.ln ? [await hashData(userData.ln)] : undefined,
+                    zp: userData.zp ? [await hashData(userData.zp)] : undefined,
+                    db: userData.db ? [await hashData(userData.db)] : undefined,
+                    ct: userData.ct ? [await hashData(userData.ct)] : undefined,
+                    st: userData.st ? [await hashData(userData.st)] : undefined,
                     client_ip_address: userData.ip,
                     client_user_agent: userData.ua,
-                    fbc: userData.fbc,
-                    fbp: userData.fbp,
-                    external_id: userData.external_id
-                        ? [await hashData(userData.external_id)]
-                        : undefined,
+                    fbc: userData.fbc, // Unhashed
+                    fbp: userData.fbp, // Unhashed
+                    external_id: userData.external_id ? [userData.external_id] : undefined, // Unhashed
                 },
                 custom_data: customData,
             },
