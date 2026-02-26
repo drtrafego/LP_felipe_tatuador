@@ -87,6 +87,8 @@ export async function POST(req: NextRequest) {
             const fbpServer = req.cookies.get('_fbp')?.value || fbp;
             const fbcServer = req.cookies.get('_fbc')?.value || fbc;
             const origin = req.headers.get('origin') || 'https://www.felptattoo.com';
+            const referer = req.headers.get('referer');
+            const sourceUrl = referer || `${origin}${page_path || '/'}`;
 
             // event_id = lead.id for deduplication with the Pixel event on the client
             const eventId = lead?.id?.toString() || Date.now().toString();
@@ -101,7 +103,7 @@ export async function POST(req: NextRequest) {
                     fbc: fbcServer,
                     fbp: fbpServer,
                     external_id: externalId,
-                    event_source_url: `${origin}/obrigado`,
+                    event_source_url: sourceUrl,
                 },
                 {
                     content_name: 'Lead Tatuagem',
