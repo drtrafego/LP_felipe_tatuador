@@ -40,10 +40,10 @@ export async function POST(req: NextRequest) {
         const tenantId = process.env.NEXT_PUBLIC_TENANT_ID || 'felipe-matias-lp';
 
         // 🎯 2. Persistência Síncrona com Timeout (Drizzle)
-        // Usamos withTimeout (5s) para garantir resposta rápida
         const upsertLead = async () => {
             try {
                 const result = await db.insert(leads).values({
+                    clientId: tenantId,
                     name,
                     whatsapp: formattedPhone,
                     utm_source,
@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
                     placement,
                     site_source_name,
                 }).onConflictDoUpdate({
-                    target: [sql`client_id`, sql`phone`], // Usando client_id (tenantId) e phone
+                    target: [leads.clientId, leads.whatsapp],
                     set: {
                         name,
                         utm_source: sql`COALESCE(EXCLUDED.utm_source, "Leads".utm_source)`,
@@ -87,87 +87,91 @@ export async function POST(req: NextRequest) {
         };
 
         const leadResult = await withTimeout(upsertLead(), 5000, null);
-
-        // Se falhar ou der timeout, usamos ID de backup para o Pixel não quebrar
         const finalLeadId = leadResult?.id?.toString() || generateBackupId();
 
         // 🛰️ 3. Processamento de Fundo (Assíncrono)
-        // Após responder 200 OK para o usuário
         (async () => {
-            const userAgent = req.headers.get('user-agent') || '';
-            const ip = req.headers.get('x-forwarded-for')?.split(',')[0] || req.headers.get('x-real-ip') || '';
-            const fbpServer = req.cookies.get('_fbp')?.value || fbp;
-            const fbcServer = req.cookies.get('_fbc')?.value || fbc;
-            const gaCookie = req.cookies.get('_ga')?.value;
-            const gaClientId = extractGAClientId(gaCookie) || externalId || finalLeadId;
-            const origin = req.headers.get('origin') || 'https://www.felptattoo.com';
-            const referer = req.headers.get('referer');
-            const sourceUrl = referer || `${origin}${page_path || '/'}`;
+            try {
+                const userAgent = req.headers.get('user-agent') || '';
+                const ip = req.headers.get('x-forwarded-for')?.split(',')[0] || req.headers.get('x-real-ip') || '';
+                const fbpServer = req.cookies.get('_fbp')?.value || fbp;
+                const fbcServer = req.cookies.get('_fbc')?.value || fbc;
+                const gaCookie = req.cookies.get('_ga')?.value;
+                const gaClientId = extractGAClientId(gaCookie) || externalId || finalLeadId;
+                const origin = req.headers.get('origin') || 'https://www.felptattoo.com';
+                const referer = req.headers.get('referer');
+                const sourceUrl = referer || `${origin}${page_path || '/'}`;
 
-            await Promise.all([
-                // META CAPI
-                sendMetaCAPI('Lead', {
-                    ph: formattedPhone,
-                    fn: name.split(' ')[0],
-                    ln: name.split(' ').slice(1).join(' ') || undefined,
-                    ip,
-                    ua: userAgent,
-                    fbc: fbcServer,
-                    fbp: fbpServer,
-                    external_id: externalId,
-                    event_source_url: sourceUrl,
-                }, {
-                    content_name: 'Lead Tatuagem',
-                    currency: 'BRL',
-                    value: 0,
-                    utm_source,
-                    utm_medium,
-                    utm_campaign,
-                    utm_term,
-                }, finalLeadId).catch(e => console.error('CAPI Background Error:', e)),
+                await Promise.all([
+                    // META CAPI
+                    sendMetaCAPI('Lead', {
+                        ph: formattedPhone,
+                        fn: name.split(' ')[0],
+                        ln: name.split(' ').slice(1).join(' ') || undefined,
+                        ip,
+                        ua: userAgent,
+                        fbc: fbcServer,
+                        fbp: fbpServer,
+                        external_id: externalId,
+                        event_source_url: sourceUrl,
+                    }, {
+                        content_name: 'Lead Tatuagem',
+                        currency: 'BRL',
+                        value: 0,
+                        utm_source,
+                        utm_medium,
+                        utm_campaign,
+                        utm_term,
+                    }, finalLeadId).catch(e => console.error('CAPI Background Error:', e)),
 
-                // GOOGLE ANALYTICS 4 (API)
-                sendGA4Event(gaClientId, 'generate_lead', {
-                    value: 0,
-                    currency: 'BRL',
-                    transaction_id: finalLeadId,
-                    utm_source: utm_source || "Site Orgânico",
-                    utm_medium: utm_medium || "Landing Page",
-                    utm_campaign: utm_campaign || "",
-                    page_location: sourceUrl,
-                }).catch(e => console.error('GA4 Background Error:', e)),
-
-                // CRM
-                process.env.CRM_WEBHOOK_URL ? fetch(process.env.CRM_WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        name, whatsapp: formattedPhone,
+                    // GOOGLE ANALYTICS 4 (API)
+                    sendGA4Event(gaClientId, 'generate_lead', {
+                        value: 0,
+                        currency: 'BRL',
+                        transaction_id: finalLeadId,
                         utm_source: utm_source || "Site Orgânico",
                         utm_medium: utm_medium || "Landing Page",
-                        page_path
-                    })
-                }).catch(e => console.error('CRM Background Error:', e)) : Promise.resolve(),
+                        utm_campaign: utm_campaign || "",
+                        page_location: sourceUrl,
+                    }).catch(e => console.error('GA4 Background Error:', e)),
 
-                // EMAIL
-                (async () => {
-                    if (process.env.EMAIL_HOST && process.env.EMAIL_USER) {
-                        try {
-                            const transporter = nodemailer.createTransport({
-                                service: 'gmail',
-                                auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
-                            });
-                            await transporter.sendMail({
-                                from: `"Felp Tattoo" <${process.env.EMAIL_USER}>`,
-                                to: process.env.EMAIL_TO || process.env.EMAIL_USER,
-                                subject: `Novo Lead: ${name}`,
-                                html: `<p>Novo lead: ${name}<br>Whatsapp: ${formattedPhone}<br>Origem: ${utm_source || 'Direto'}</p>`,
-                            });
-                        } catch (e) { console.error('Email Background Error:', e); }
-                    }
-                })()
-            ]);
-        })().catch(e => console.error('Background Processing Error:', e));
+                    // CRM
+                    process.env.CRM_WEBHOOK_URL ? fetch(process.env.CRM_WEBHOOK_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name,
+                            whatsapp: formattedPhone,
+                            utm_source: utm_source || "Site Orgânico",
+                            utm_medium: utm_medium || "Landing Page",
+                            page_path
+                        })
+                    }).catch(e => console.error('CRM Background Error:', e)) : Promise.resolve(),
+
+                    // EMAIL
+                    (async () => {
+                        if (process.env.EMAIL_HOST && process.env.EMAIL_USER) {
+                            try {
+                                const transporter = nodemailer.createTransport({
+                                    host: process.env.EMAIL_HOST,
+                                    port: parseInt(process.env.EMAIL_PORT || '465'),
+                                    secure: process.env.EMAIL_PORT === '465',
+                                    auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
+                                });
+                                await transporter.sendMail({
+                                    from: `"Felp Tattoo" <${process.env.EMAIL_USER}>`,
+                                    to: process.env.EMAIL_TO || process.env.EMAIL_USER,
+                                    subject: `Novo Lead: ${name}`,
+                                    html: `<p>Novo lead: ${name}<br>Whatsapp: ${formattedPhone}<br>Origem: ${utm_source || 'Direto'}</p>`,
+                                });
+                            } catch (e) { console.error('Email Background Error:', e); }
+                        }
+                    })()
+                ]);
+            } catch (bgError) {
+                console.error('Background Processing Outer Error:', bgError);
+            }
+        })().catch(e => console.error('Background IIFE Error:', e));
 
         // ✅ 4. Resposta Imediata
         return NextResponse.json({
@@ -180,3 +184,4 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
     }
 }
+

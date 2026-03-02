@@ -2,6 +2,7 @@ import { pgTable, serial, text, timestamp, varchar } from 'drizzle-orm/pg-core';
 
 export const leads = pgTable('Leads', {
     id: serial('id').primaryKey(),
+    clientId: text('client_id').notNull(), // Added to match backend architecture
     name: text('name').notNull(),
     email: text('email'), // Optional as per current form
     whatsapp: varchar('phone', { length: 255 }).notNull(),
