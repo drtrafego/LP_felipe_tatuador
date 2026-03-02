@@ -73,7 +73,7 @@ export async function sendMetaCAPI(
                     client_user_agent: userData.ua,
                     fbc: userData.fbc, // Unhashed
                     fbp: userData.fbp, // Unhashed
-                    external_id: userData.external_id ? [userData.external_id] : undefined, // Unhashed
+                    external_id: userData.external_id ? [await hashData(userData.external_id)] : undefined, // Hashed as per documentation
                 },
                 custom_data: customData,
             },
