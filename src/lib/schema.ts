@@ -1,11 +1,11 @@
 import { pgTable, serial, text, timestamp, varchar } from 'drizzle-orm/pg-core';
 
-export const leads = pgTable('Leads', {
+export const leads = pgTable('leads', {
     id: serial('id').primaryKey(),
-    clientId: text('client_id').notNull(), // Added to match backend architecture
+    clientId: text('organization_id').notNull(), // Switched to existing organization_id column
     name: text('name').notNull(),
     email: text('email'), // Optional as per current form
-    whatsapp: varchar('phone', { length: 255 }).notNull(),
+    whatsapp: varchar('whatsapp', { length: 255 }).notNull(), // Mapping to existing whatsapp column
     utm_source: text('utm_source'),
     utm_medium: text('utm_medium'),
     utm_campaign: text('utm_campaign'),

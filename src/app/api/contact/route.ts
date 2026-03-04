@@ -59,25 +59,6 @@ export async function POST(req: NextRequest) {
                     campaign_name,
                     placement,
                     site_source_name,
-                }).onConflictDoUpdate({
-                    target: [leads.clientId, leads.whatsapp],
-                    set: {
-                        name,
-                        utm_source: sql`COALESCE(EXCLUDED.utm_source, "Leads".utm_source)`,
-                        utm_medium: sql`COALESCE(EXCLUDED.utm_medium, "Leads".utm_medium)`,
-                        utm_campaign: sql`COALESCE(EXCLUDED.utm_campaign, "Leads".utm_campaign)`,
-                        utm_term: sql`COALESCE(EXCLUDED.utm_term, "Leads".utm_term)`,
-                        page_path: sql`EXCLUDED.page_path`,
-                        ad_id: sql`COALESCE(EXCLUDED.ad_id, "Leads".ad_id)`,
-                        adset_id: sql`COALESCE(EXCLUDED.adset_id, "Leads".adset_id)`,
-                        campaign_id: sql`COALESCE(EXCLUDED.campaign_id, "Leads".campaign_id)`,
-                        ad_name: sql`COALESCE(EXCLUDED.ad_name, "Leads".ad_name)`,
-                        adset_name: sql`COALESCE(EXCLUDED.adset_name, "Leads".adset_name)`,
-                        campaign_name: sql`COALESCE(EXCLUDED.campaign_name, "Leads".campaign_name)`,
-                        placement: sql`COALESCE(EXCLUDED.placement, "Leads".placement)`,
-                        site_source_name: sql`COALESCE(EXCLUDED.site_source_name, "Leads".site_source_name)`,
-                        updated_at: new Date(),
-                    },
                 }).returning();
                 return result[0];
             } catch (err) {
