@@ -37,7 +37,10 @@ export async function POST(req: NextRequest) {
         }
 
         const formattedPhone = phone.replace('+', '').replace(/\D/g, '');
-        const tenantId = process.env.NEXT_PUBLIC_TENANT_ID || 'felipe-matias-lp';
+        let tenantId = process.env.NEXT_PUBLIC_TENANT_ID || 'a20d05cd-ea77-4456-8feb-586eeca3cfea';
+        if (tenantId === 'felipe-matias-lp') {
+            tenantId = 'a20d05cd-ea77-4456-8feb-586eeca3cfea'; // Force the correct UUID
+        }
 
         // 🎯 2. Persistência Síncrona com Timeout (Drizzle)
         const upsertLead = async () => {
@@ -122,9 +125,21 @@ export async function POST(req: NextRequest) {
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             name,
+                            email: "",
                             whatsapp: formattedPhone,
+                            company: "",
+                            notes: "",
+                            // Variações comuns para garantir reconhecimento no CRM
                             utm_source: utm_source || "Site Orgânico",
                             utm_medium: utm_medium || "Landing Page",
+                            utm_campaign: utm_campaign || "",
+                            source: utm_source || "Site Orgânico",
+                            medium: utm_medium || "Landing Page",
+                            campaign: utm_campaign || "",
+                            traffic_source: utm_source || "Site Orgânico",
+                            // Mantendo o campo original também
+                            campaignSource: utm_source ? `${utm_source} / ${utm_medium}` : "Site Orgânico / Landing Page",
+                            message: "",
                             page_path
                         })
                     }).catch(e => console.error('CRM Background Error:', e)) : Promise.resolve(),
