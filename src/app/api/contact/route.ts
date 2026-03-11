@@ -73,8 +73,10 @@ export async function POST(req: NextRequest) {
         const leadResult = await withTimeout(upsertLead(), 5000, null);
         const finalLeadId = leadResult?.id?.toString() || generateBackupId();
 
-        // 🛰️ 3. Processamento de Fundo (Assíncrono)
-        (async () => {
+        // 🛰️ 3. Processamento de Integrações
+        // IMPORTANTE: Na Vercel (Serverless Node.js), processos em background são congelados
+        // assim que a resposta é enviada. Usamos await para garantir que o CRM receba os dados.
+        await (async () => {
             try {
                 const userAgent = req.headers.get('user-agent') || '';
                 const ip = req.headers.get('x-forwarded-for')?.split(',')[0] || req.headers.get('x-real-ip') || '';
